@@ -14,13 +14,13 @@ http://codex.wordpress.org/Function_Reference/wp_enqueue_script
 
 ******************************************************************/
 
-// Modernizr.load loading the right scripts only if you need them
+// Modernizr will load certain scripts only if you need them
 Modernizr.load([
 	{
-    // Let's see if we need to load selectivizr
-    test : Modernizr.borderradius,
-    // Modernizr.load loads selectivizr and Respond.js for IE6-8
-    nope : ['libs/selectivizr-min.js']
+    // Test if browser supports media queries
+    test : Modernizr.mq('only all'),
+    // If not, load Respond.js
+    nope : ['js/respond.js']
 	}
 ]); /* end Modernizr load script */
 
