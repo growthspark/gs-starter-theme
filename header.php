@@ -1,14 +1,14 @@
-<!DOCTYPE html> 
-
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!DOCTYPE html><!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if IE 9]>    <html class="lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
 
 
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 	<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
     
@@ -25,17 +25,26 @@
 
 <body <?php body_class(); ?> >
 
-
-	<div id="pageContainer">
-		<header id="pageHeader">
-				<div id="logo">
-					<a href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/gs-logo.png"></a>
+	<div id="page-container">
+		<header id="page-header" class="container" role="banner">
+			<div class="row header-row">
+				<div class="logo-container four columns no-border">
+					<img src="<?php bloginfo('template_url'); ?>/img/logo.png" class="logo">
 				</div>
-				<nav>
-					<?php wp_nav_menu( array( 'sort_column' => 'menu_order', 'theme_location' => 'main', 'fallback_cb' => '',) ); ?>
+				<div class="eight columns nav-container no-border">
+					<nav class="header-nav" role="navigation">
+						<ul class="nav-links clearfix">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="subpage.html">Subpage</a></li>	
+							<li><a href="grid.html">Grid</a></li>							
+						</ul>
+						<?php //wp_nav_menu( array( 'sort_column' => 'menu_order', 'theme_location' => 'main', 'fallback_cb' => '',) ); ?>
 				</nav>
+					</nav>
+				</div>
+			</div>
 		</header>
-        
-        <div id="pageContent" role="main">
+
+		<div id="page-content" class="container" role="main">
         
 <!--END HEADER-->

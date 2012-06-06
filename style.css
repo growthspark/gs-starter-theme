@@ -1,12 +1,180 @@
 /*
 Theme Name: Growth Spark
-Description: Growthspark Theme Playground Version 0.2, Sean B
+Description: GrowthSpark WordPress Theme
 Theme URI: http://growthspark.com
-Version: 0.2
+Version: 1.0
 Author: Growth Spark
 Author URI: http://growthspark.com
 */
 
 
+@import url(css/base.css);
+@import url(css/grid.css);
 
 /** Theme-Specific styles go here  **/
+
+/* ----------------------------------------------------------
+General Formatting
+------------------------------------------------------------- */
+
+html{
+    overflow:scroll;
+}
+
+html, body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	line-height: 1.4;
+}
+
+
+h1, h2, h3, h4 {
+	margin: .6em 0;
+	font-family: 'Oswald', sans-serif;
+	font-weight: normal;
+}
+
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.2em; }
+
+p { 
+	font-size: .9em; 
+	line-height: 1.8;
+}
+
+a, a:visited {
+	color: #39C;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #6C0;
+}
+
+/* ----------------------------------------------------------
+:: Grid Customization
+
+Defaults set in grid.css
+------------------------------------------------------------- */
+
+.row {
+	width: 980px;
+	margin: 20px auto 0 auto; 
+}
+
+.inner {
+	padding: 5px;
+}
+
+
+/* ----------------------------------------------------------
+Header
+------------------------------------------------------------- */
+
+#page-header {
+	background-color: #222;
+}
+
+.header-row {
+	margin-top: 0;
+}
+
+.nav-container {
+	height: 100%;
+}
+
+.header-nav {
+	margin-top: 40px;
+}
+
+.nav-links {
+	padding-bottom: 20px;
+}
+
+.nav-links li {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.3em;
+	float: left;
+	margin-right: 30px;
+}
+
+.nav-links li:last-child {
+	margin-left: 0;
+}
+
+.nav-links a {
+	color: white;
+}
+
+.nav-links a:hover {
+	color: #6C0;
+}
+
+.logo-container {
+	margin-top: 0;
+}
+
+.logo {
+	padding: 10px 0;
+}
+
+
+/* ----------------------------------------------------------
+Homepage 
+------------------------------------------------------------- */
+#slideshow {
+	/*height: 350px;*/
+}
+
+#slideshow .slide {
+	border: 1px solid #999;
+}
+
+.slide-text .container {
+	margin-left: 2%;
+	padding: 50px 0;
+}
+
+.home-widget {
+	/*border: 1px solid #999;
+	padding: 4%;*/
+}
+
+
+/* ----------------------------------------------------------
+Grid Demo Page
+------------------------------------------------------------- */
+.grid-demo .columns, .grid-demo .column {
+	background-color: #ccc;
+	height: 50px;
+	font-size: 12px;
+	text-align: center;
+}
+
+.grid-demo .row {
+	background: #EEE;
+}
+
+
+/* ----------------------------------------------------------
+Sidebar
+------------------------------------------------------------- */
+.side-widget {
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	padding: 15px;
+}
+
+/* ----------------------------------------------------------
+Footer
+------------------------------------------------------------- */
+#page-footer {
+	background: #DDD;
+}

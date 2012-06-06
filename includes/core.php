@@ -31,7 +31,7 @@ function gs_queue_js_and_css() {
   }
 }
 // enqueue base scripts and styles
-add_action('wp_enqueue_scripts', 'gs_queue_js_and_css', 1);]
+add_action('wp_enqueue_scripts', 'gs_queue_js_and_css', 1);
 
 
 /* --------------------------------------------------------------------
