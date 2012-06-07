@@ -6,19 +6,16 @@
 
 
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
-    
-    
-	<!-- icons & favicons -->
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <!-- wordpress head functions -->
-	<?php wp_head(); ?>
-	<!-- end wordpress head functions -->
+<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
+
+<!-- wordpress head functions -->
+<?php wp_head(); ?>
+<!-- end wordpress head functions -->
 
 </head>
 
@@ -29,17 +26,16 @@
 		<header id="page-header" class="container" role="banner">
 			<div class="row header-row">
 				<div class="logo-container four columns no-border">
-					<img src="<?php bloginfo('template_url'); ?>/img/logo.png" class="logo">
+					<a href="<?php bloginfo('url'); ?>" class="logo ir"><?php bloginfo('name'); ?></a>
 				</div>
 				<div class="eight columns nav-container no-border">
 					<nav class="header-nav" role="navigation">
-						<ul class="nav-links clearfix">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="subpage.html">Subpage</a></li>	
-							<li><a href="grid.html">Grid</a></li>							
-						</ul>
-						<?php //wp_nav_menu( array( 'sort_column' => 'menu_order', 'theme_location' => 'main', 'fallback_cb' => '',) ); ?>
-				</nav>
+						<?php wp_nav_menu( 
+							array(  'sort_column' => 'menu_order', 
+									'theme_location' => 'main', 
+									'menu_class' => 'nav-links clearfix',
+									'container' => 'false', 
+									'fallback_cb' => '',) ); ?>
 					</nav>
 				</div>
 			</div>

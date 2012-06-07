@@ -1,0 +1,17 @@
+/* Base Styles For Widget Display */
+
+.rpp-thumb {
+	margin: 0 .5em .1em 0;
+}
+
+.rpp-thumb-left {
+	float: left;
+}
+
+.rpp-thumb-right {
+	float: right;
+}
+
+.rpp-date {
+	font-size: .9em;
+}

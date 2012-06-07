@@ -1,0 +1,15 @@
+/* Styles For Widget Admin */
+
+#widget-recent_posts_plus_plus-2-excerpt_length {
+	width: 40px;
+	margin-left: 2px;
+}
+
+#widget-recent_posts_plus_plus-2-date_format,
+#widget-recent_posts_plus_plus-2-thumbnail {
+	width: 125px;
+}
+
+#widget-recent_posts_plus_plus-2-num_posts {
+	width: 60px;
+}

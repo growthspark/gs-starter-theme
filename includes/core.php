@@ -9,9 +9,51 @@ Custom functions should be configured in functions.php
 
 
 /* --------------------------------------------------------------------
+:: Auto-Includer
+
+Loads PHP files from the /includes/ directory
+
+-------------------------------------------------------------------- */
+
+function growthspark_init_test( $filename ) {
+    // Skip over files appended with -sample.php
+    $test = strpos($filename, '-sample'); 
+    // Skip over this file since it's already included
+    $test2 = strpos($filename, 'core.php');
+
+    if (!$test && !$test2) {
+      return true;
+    } else {
+      return false;
+    }
+}
+
+/* --------------------------------------------------------------------
+Include PHP files located in /includes/
+-------------------------------------------------------------------- */
+foreach (glob(__DIR__ . '/*.php') as $gs_theme_filename) {
+
+  if ( growthspark_init_test( $gs_theme_filename ) ) {
+      include_once $gs_theme_filename;
+  }
+
+}
+
+/* --------------------------------------------------------------------
+Include PHP files located in direct sub-directories of /includes/
+-------------------------------------------------------------------- */
+foreach (glob(__DIR__ . '/*/*.php') as $gs_theme_filename) {
+
+  if ( growthspark_init_test( $gs_theme_filename ) ) {
+      include_once $gs_theme_filename;
+  }
+
+}
+
+/* --------------------------------------------------------------------
 Register & Enqueue Core Scripts & Stylesheet
 -------------------------------------------------------------------- */
-function gs_queue_js_and_css() {
+function gs_enqueue_scripts() {
   if (!is_admin()) {
   // include modernizr in the head
     wp_register_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.custom.js', array(), '1', false );
@@ -25,19 +67,51 @@ function gs_queue_js_and_css() {
     wp_register_script( 'gs-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'modernizr', 'jquery' ), '1', true );
     wp_enqueue_script( 'gs-scripts' );
 
-	// Register main stylesheet
-    wp_register_style( 'gs-styles', get_template_directory_uri() . '/style.css', array(), '1', 'all' );
-    wp_enqueue_style( 'gs-styles' );
   }
 }
 // enqueue base scripts and styles
-add_action('wp_enqueue_scripts', 'gs_queue_js_and_css', 1);
+add_action('template_redirect', 'gs_enqueue_scripts', 1);
 
 
 /* --------------------------------------------------------------------
 Remove WP Version Number
 -------------------------------------------------------------------- */
 remove_action('wp_head', 'wp_generator');
+
+
+/* --------------------------------------------------------------------
+
+:: JavaScript Variables
+
+Set global variables for use in JavaScript files
+
+-------------------------------------------------------------------- */
+function gs_set_javascript_variables() {
+?>
+<script>
+    var siteurl = '<?php bloginfo('url'); ?>';
+    var templateurl = '<?php bloginfo('template_url'); ?>';
+</script>
+
+<?
+}
+add_action('wp_head', 'gs_set_javascript_variables', 1);
+
+
+/* --------------------------------------------------------------------
+
+:: GS Comment Count
+
+Template for displaying comment count
+
+-------------------------------------------------------------------- */
+function gs_comment_count() {
+  if((get_comments_number() > 0))  : 
+  ?>
+    &nbsp;| &nbsp;<a href="<?php the_permalink(); ?>#comments"><?php comments_number('no comments','1 comment','% comments'); ?></a>
+  <?php 
+  endif;
+}
 
 
 ?>
