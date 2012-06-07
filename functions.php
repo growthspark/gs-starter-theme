@@ -29,6 +29,24 @@ set_post_thumbnail_size( 150, 150, true ); // Normal post thumbnails
 add_image_size( 'slide', 960, 300, true );
 // add_image_size( 'custom-thumb-name', 150, 150, true ); 
 
+/* --------------------------------------------------------------------
+Enable Custom Header Support (For Logos)
+-------------------------------------------------------------------- */
+$defaults = array(
+	'default-image'          => get_template_directory_uri().'/img/logo.png',
+	'random-default'         => false,
+	'width'                  => 217,
+	'height'                 => 80,
+	'flex-height'            => false,
+	'flex-width'             => false,
+	'default-text-color'     => '',
+	'header-text'            => true,
+	'uploads'                => true,
+	'wp-head-callback'       => '',
+	'admin-head-callback'    => '',
+	'admin-preview-callback' => '',
+);
+add_theme_support( 'custom-header', $defaults );
 
 /* --------------------------------------------------------------------
 

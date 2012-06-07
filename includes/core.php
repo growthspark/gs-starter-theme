@@ -113,5 +113,4 @@ function gs_comment_count() {
   endif;
 }
 
-
 ?>

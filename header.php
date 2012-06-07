@@ -26,7 +26,9 @@
 		<header id="page-header" class="container" role="banner">
 			<div class="row header-row">
 				<div class="logo-container four columns no-border">
-					<a href="<?php bloginfo('url'); ?>" class="logo ir"><?php bloginfo('name'); ?></a>
+					<a href="<?php bloginfo('url'); ?>" class="logo ir" style="background:no-repeat url(<?php header_image(); ?>);">
+						<?php bloginfo('name'); ?>
+					</a>
 				</div>
 				<div class="eight columns nav-container no-border">
 					<nav class="header-nav" role="navigation">
