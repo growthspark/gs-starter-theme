@@ -12,10 +12,6 @@
 
 					</article>
 
-					<div id="comments">
-						<?php comments_template(); ?>
-					</div>
-
 				<?php endwhile; endif; ?>
 
 <?php get_template_part('content', 'page-bottom'); ?>
