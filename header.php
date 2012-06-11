@@ -36,8 +36,8 @@
 							array(  'sort_column' => 'menu_order', 
 									'theme_location' => 'main', 
 									'menu_class' => 'nav-links clearfix',
-									'container' => 'false', 
-									'fallback_cb' => '',) ); ?>
+									'container' => 'false') 
+									); ?>
 					</nav>
 				</div>
 			</div>
