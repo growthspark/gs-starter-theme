@@ -11,30 +11,17 @@ Custom functions should be configured in functions.php
 /* --------------------------------------------------------------------
 :: Auto-Includer
 
-Loads PHP files from the /includes/ directory
+Loads PHP files from the /includes/ directory.
 
 -------------------------------------------------------------------- */
-
-function growthspark_init_test( $filename ) {
-    // Skip over files appended with -sample.php
-    $test = strpos($filename, '-sample'); 
-    // Skip over this file since it's already included
-    $test2 = strpos($filename, 'core.php');
-
-    if (!$test && !$test2) {
-      return true;
-    } else {
-      return false;
-    }
-}
 
 /* --------------------------------------------------------------------
 Include PHP files located in /includes/
 -------------------------------------------------------------------- */
-foreach (glob(__DIR__ . '/*.php') as $gs_theme_filename) {
+foreach (glob(__DIR__ . '/*.php') as $my_theme_filename) {
 
-  if ( growthspark_init_test( $gs_theme_filename ) ) {
-      include_once $gs_theme_filename;
+  if (!strpos($my_theme_filename, '-sample') && !strpos($my_theme_filename, 'core.php') ) {
+      include_once $my_theme_filename;
   }
 
 }
@@ -42,10 +29,10 @@ foreach (glob(__DIR__ . '/*.php') as $gs_theme_filename) {
 /* --------------------------------------------------------------------
 Include PHP files located in direct sub-directories of /includes/
 -------------------------------------------------------------------- */
-foreach (glob(__DIR__ . '/*/*.php') as $gs_theme_filename) {
+foreach (glob(__DIR__ . '/*/*.php') as $my_theme_filename) {
 
-  if ( growthspark_init_test( $gs_theme_filename ) ) {
-      include_once $gs_theme_filename;
+  if (!strpos($my_theme_filename, '-sample') ) {
+      include_once $my_theme_filename;
   }
 
 }
