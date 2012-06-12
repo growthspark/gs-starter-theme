@@ -223,7 +223,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id('num_posts'); ?>"><?php _e('# of Posts:'); ?></label>
-			<select class="widefat" id="<?php echo $this->get_field_id('num_posts'); ?>" name="<?php echo $this->get_field_name('num_posts'); ?>">
+			<select class="widefat" id="rpp-num-posts" name="<?php echo $this->get_field_name('num_posts'); ?>">
 
 			<?php
 			for ($i = 1; $i <= 10; $i++) {
@@ -239,7 +239,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id('excerpt_length'); ?>"><?php _e('Excerpt Length:'); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id('excerpt_length'); ?>" name="<?php echo $this->get_field_name('excerpt_length'); ?>" type="text" value="<?php echo $excerpt_length; ?>" />
+			<input class="widefat" id="rpp-excerpt-length" name="<?php echo $this->get_field_name('excerpt_length'); ?>" type="text" value="<?php echo $excerpt_length; ?>" />
 			[ 0 = No Excerpt ]
 		</p>
 
@@ -247,7 +247,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('date_format'); ?>"><?php _e('Date Format:'); ?></label>
 
-			<select class="widefat" id="<?php echo $this->get_field_id('date_format'); ?>" name="<?php echo $this->get_field_name('date_format'); ?>">
+			<select class="widefat" id="rpp-date-format" name="<?php echo $this->get_field_name('date_format'); ?>">
 			
 				<option value="none">(no date)</option>
 
@@ -272,7 +272,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e('Thumbnails:'); ?></label>
 
-			<select class="widefat" id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>">
+			<select class="widefat" id="rpp-thumbnail-field" name="<?php echo $this->get_field_name('thumbnail'); ?>">
 			
 				<option value="none">(no thumbnails)</option>
 
