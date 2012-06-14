@@ -8,9 +8,9 @@
 		</footer>
 	</div><!-- / #page-container -->
 
-	<!-- WP Footer Functions -->
+	<!-- BEGIN footer functions -->
 	<?php wp_footer(); ?>
-	<!-- End WP Footer Functions -->
+	<!-- END footer functions -->
 
 </body>
 </html>
