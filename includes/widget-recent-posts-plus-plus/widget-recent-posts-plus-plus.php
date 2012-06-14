@@ -124,7 +124,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 
 				<?php if ( $date_format != 'none' && $date_format != '' ) { ?>
 
-					<div class="rpp-date"><?php the_date($date_format); ?></div>
+					<div class="rpp-date"><?php the_time($date_format); ?></div>
 
 				<?php } ?>
 
