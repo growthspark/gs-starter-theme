@@ -13,9 +13,9 @@
 
 <title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
 
-<!-- wordpress head functions -->
+<!-- BEGIN head functions -->
 <?php wp_head(); ?>
-<!-- end wordpress head functions -->
+<!-- END head functions -->
 
 </head>
 
