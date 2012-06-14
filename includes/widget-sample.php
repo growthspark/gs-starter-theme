@@ -1,8 +1,9 @@
 <?php
-/**
- * Custom Widget Template
- */
+/**************************************************************
 
+:: Custom Widget Template
+
+***************************************************************/
 
 class Foo_Widget extends WP_Widget {
 
@@ -76,7 +77,7 @@ class Foo_Widget extends WP_Widget {
 		<?php 
 	}
 
-} // class Foo_Widget
+} // Widget class 
 
-// register Foo_Widget widget
+// register the widget
 add_action( 'widgets_init', create_function( '', 'register_widget( Foo_Widget );' ) );
