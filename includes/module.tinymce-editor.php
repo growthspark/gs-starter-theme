@@ -96,7 +96,7 @@ III. Customize Second Row Icons
 
 -------------------------------------------------------------------- */
 if( !function_exists('gs_custom_mce_buttons_2') ){
-	function base_extended_editor_mce_buttons_2($buttons) {
+	function gs_custom_mce_buttons_2($buttons) {
 		/* 
 
 		Sets the second row of buttons.  Specify your desired buttons in the following array.
