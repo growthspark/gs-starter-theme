@@ -61,12 +61,20 @@ Configure Theme Stylesheets
 
 http://codex.wordpress.org/Function_Reference/wp_enqueue_style
 -------------------------------------------------------------------- */
-function gs_register_stylesheets() {
+function gs_load_stylesheets() {
     wp_enqueue_style( 'gs-base', get_template_directory_uri() . '/css/base.css', array(), '1', 'all' );
     wp_enqueue_style( 'gs-grid', get_template_directory_uri() . '/css/grid.css', array('gs-base'), '1', 'all' );
     wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('gs-base', 'gs-grid'), '1', 'all' );
 }
-add_action('template_redirect', 'gs_register_stylesheets');
+add_action('wp_enqueue_scripts', 'gs_load_stylesheets');
+
+/* --------------------------------------------------------------------
+Load Custom Stylesheets for the Admin interface
+-------------------------------------------------------------------- */
+function gs_load_admin_stylesheet() {
+	wp_enqueue_style( 'gs-admin-styles', get_template_directory_uri() . '/css/admin.css', array(), '1', 'all' );
+}
+add_action('admin_enqueue_scripts','gs_load_admin_stylesheet');
 
 /* --------------------------------------------------------------------
 Load jQuery Cycle
@@ -113,5 +121,7 @@ function gs_jquery_cycle_settings() {
 	}
 }
 add_action('wp_footer', 'gs_jquery_cycle_settings');
+
+
 
 ?>
