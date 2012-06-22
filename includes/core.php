@@ -20,7 +20,7 @@ Include PHP files located in /includes/
 -------------------------------------------------------------------- */
 foreach (glob(__DIR__ . '/*.php') as $my_theme_filename) {
 
-  if (!strpos($my_theme_filename, '-sample') && !strpos($my_theme_filename, 'core.php') ) {
+  if (!strpos($my_theme_filename, 'sample.php') && !strpos($my_theme_filename, 'core.php') ) {
       include_once $my_theme_filename;
   }
 
