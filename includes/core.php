@@ -16,29 +16,65 @@ Loads PHP files from the /includes/ directory.
 -------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------
-Include PHP files located in /includes/
+Test for Permitted Filenames
 -------------------------------------------------------------------- */
-foreach (glob(__DIR__ . '/*.php') as $my_theme_filename) {
+function gs_permitted_file($included_file) {
 
-  if (!strpos($my_theme_filename, 'sample.php') && !strpos($my_theme_filename, 'core.php') ) {
-      include_once $my_theme_filename;
+  $forbidden = array( 
+                'sample',
+                'core.php'
+                );
+
+  $required = array(
+                'widget.',
+                'cpt.',
+                'module.'
+                );
+
+  $result = false;
+
+  foreach ( $required as $test ) {
+     if ( strpos($included_file, $test) ) {
+       $result = true;
+    }
+  }
+
+  foreach ( $forbidden as $test ) {
+     if ( strpos($included_file, $test) ) {
+       $result = false;
+    }
+  }
+
+  return $result;
+
+}
+
+/* --------------------------------------------------------------------
+Include Permitted PHP files located in /includes/
+-------------------------------------------------------------------- */
+foreach (glob(__DIR__ . '/*.php') as $file) {
+
+  if ( gs_permitted_file($file) ) {
+    include_once $file;
   }
 
 }
 
 /* --------------------------------------------------------------------
-Include PHP files located in direct sub-directories of /includes/
+Include Permitted PHP files located in direct sub-directories of /includes/
 -------------------------------------------------------------------- */
-foreach (glob(__DIR__ . '/*/*.php') as $my_theme_filename) {
+foreach (glob(__DIR__ . '/*/*.php') as $file) {
 
-  if (!strpos($my_theme_filename, '-sample') ) {
-      include_once $my_theme_filename;
+  if ( gs_permitted_file($file) ) {
+    include_once $file;
   }
 
 }
 
 /* --------------------------------------------------------------------
-Register & Enqueue Core Scripts & Stylesheet
+
+:: Register & Enqueue Core Scripts & Stylesheet
+
 -------------------------------------------------------------------- */
 function gs_enqueue_scripts() {
   if (!is_admin()) {
@@ -61,7 +97,9 @@ add_action('template_redirect', 'gs_enqueue_scripts', 1);
 
 
 /* --------------------------------------------------------------------
-Remove WP Version Number
+
+:: Remove WP Version Number
+
 -------------------------------------------------------------------- */
 remove_action('wp_head', 'wp_generator');
 
