@@ -4,7 +4,7 @@
 :: Sidebars Configuration File
 
 I. Set Widget Templates
-II. Build Widget Areas
+II. Register Widget Areas (Sidebars)
 
 ***************************************************************/
 
@@ -14,58 +14,40 @@ II. Build Widget Areas
 I. Set Widget Templates
 
 ------------------------------------------------------------- */
-function gs_before_widget() {
-  return '<div id="%1$s" class="%2$s side-widget">';
-}
-function gs_after_widget() {
-  return '</div>';
-}
-function gs_before_title() {
-  return '<h4>';
-}
-function gs_after_title() {
-  return '</h4>';
-}
-function gs_home_before_widget() {
-  return '<div id="%1$s" class="home-widget %2$s four columns"><div class="widget-container">';
-}
-function gs_home_after_widget() {
-  return '</div></div>';
+Class GS_Widget_Templates {
+
+  public $sidebar = array( 
+        'before_widget' => '<div id="%1$s" class="%2$s side-widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4>',
+        'after_title' => '<h4>',
+    );
+
+  public $home = array( 
+        'before_widget' => '<div id="%1$s" class="home-widget %2$s four columns"><div class="widget-container">',
+        'after_widget' => '</div></div>',
+        'before_title' => '<h4>',
+        'after_title' => '<h4>',
+    );
+
 }
 
-/* ----------------------------------------------------------
+/** ----------------------------------------------------------
 
 II. Build Widget Areas
 
+gs_register_sidebar($name, $template_type)
+
+$name - required - The name of the sidebar to be registered
+
+$template_type - optional - The front-end template that widgets 
+in the sidebar should use.  Templates are set above in 
+GS_Widget_Templates.   (default: 'sidebar')
+
 ------------------------------------------------------------- */
-if ( function_exists('register_sidebars') )
-    register_sidebar(array(
-        'name'=>'Homepage Widgets',
-        'id' => 'homepage-widgets',
-        'before_widget' => gs_home_before_widget(),
-        'after_widget' => gs_home_after_widget(),
-        'before_title' => gs_before_title(),
-        'after_title' => gs_after_title(),
-     ));
+gs_register_sidebar('Homepage Widgets', 'home');
+gs_register_sidebar('Page Sidebar');
+gs_register_sidebar('Blog Sidebar');
 
-if ( function_exists('register_sidebars') )
-    register_sidebar(array(
-        'name'=>'Page Sidebar',
-        'id' => 'page-sidebar',
-        'before_widget' => gs_before_widget(),
-        'after_widget' => gs_after_widget(),
-        'before_title' => gs_before_title(),
-        'after_title' => gs_after_title(),
-     ));
-
-if ( function_exists('register_sidebars') )
-    register_sidebar(array(
-        'name'=>'News & Press Sidebar',
-        'id' => 'news-press-sidebar',
-        'before_widget' => gs_before_widget(),
-        'after_widget' => gs_after_widget(),
-        'before_title' => gs_before_title(),
-        'after_title' => gs_after_title(),
-     ));
 
 ?>

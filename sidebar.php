@@ -1,5 +1,6 @@
 <!--BEGIN SIDEBARS -->
 
+
 <?php if( is_front_page() ):?>
 
 	<aside id="home-widgets" class="row">
@@ -10,13 +11,19 @@
 <?php elseif ( is_singular('post') ):?>
 
 	<aside id="sidebar" class="four columns">
-		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Blog Sidebar') ); ?>
+		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Blog Sidebar') ): ?>
+		<?php endif; ?>	
+
 	</aside>	
 
 <?php else:?>
 
 	<aside id="sidebar" class="four columns">
-		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Page Sidebar') ); ?>	
+		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Page Sidebar') ): ?>
+
+		<?php// gs_create_widget('WP_Widget_Search'); ?>
+
+		<?php endif; ?>	
 	</aside>
 
 <?php endif;?>

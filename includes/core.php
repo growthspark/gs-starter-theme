@@ -22,7 +22,12 @@ function gs_permitted_file($included_file) {
 
   $forbidden = array( 
                 'sample',
-                'core.php'
+                'core.php',
+                'Copy of',
+                '- Copy',
+                '(1)',
+                '(2)',
+                '(3)'
                 );
 
   $required = array(
@@ -122,6 +127,50 @@ function gs_set_javascript_variables() {
 }
 add_action('wp_head', 'gs_set_javascript_variables', 1);
 
+
+/* --------------------------------------------------------------------
+
+:: GS Register Sidebar
+
+Function for registering sidebars via class-based templates.  
+
+-------------------------------------------------------------------- */
+function gs_register_sidebar($name, $template_type = 'sidebar') {
+
+  $template = new GS_Widget_Templates;
+  $id = preg_replace('/[^A-Za-z0-9-]+/', '-', $name);
+  $id = strtolower($id);
+  $sidebar_id = 'gs-'.$id;
+
+  if ( ($template->$template_type) ) {
+
+    $args = $template->$template_type;
+    $args['name'] = $name;
+    $args['id'] = $sidebar_id;
+    register_sidebar($args);
+  
+  }
+
+}
+
+/* --------------------------------------------------------------------
+
+:: GS Create Widget
+
+-------------------------------------------------------------------- */
+function gs_create_widget($name, $instance = '', $template_type = 'sidebar') {
+
+  $template = new GS_Widget_Templates;
+
+  if (($template->$template_type)) {
+
+    $args = $template->$template_type;
+
+    the_widget($name, $instance, $args );
+  
+  }
+
+}
 
 /* --------------------------------------------------------------------
 
