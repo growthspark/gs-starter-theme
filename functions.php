@@ -63,8 +63,7 @@ http://codex.wordpress.org/Function_Reference/wp_enqueue_style
 -------------------------------------------------------------------- */
 function gs_load_stylesheets() {
     wp_enqueue_style( 'gs-base', get_template_directory_uri() . '/css/base.css', array(), '1', 'all' );
-    wp_enqueue_style( 'gs-grid', get_template_directory_uri() . '/css/grid.css', array('gs-base'), '1', 'all' );
-    wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('gs-base', 'gs-grid'), '1', 'all' );
+    wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('gs-base'), '1', 'all' );
 }
 add_action('wp_enqueue_scripts', 'gs_load_stylesheets');
 
@@ -87,7 +86,6 @@ function gs_load_jquery_cycle() {
     wp_enqueue_script( 'jquery-cycle' );
 
 	}
-
 }
 add_action('template_redirect', 'gs_load_jquery_cycle');
 
