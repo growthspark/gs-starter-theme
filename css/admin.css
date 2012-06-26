@@ -15,3 +15,10 @@ Header Image (Appearance -> Header)
 #headimg #desc {
 	display: none;
 }
+
+/* --------------------------------------------------------------------
+Hide "Customize" Link in Themes Panel
+-------------------------------------------------------------------- */
+#customize-current-theme-link {
+	display: none;
+}
