@@ -1,22 +1,16 @@
 <?php
-/**
-Core GrowthSpark Theme File
+/**********************************************************************
 
-DO NOT CUSTOMIZE this file unless it's absolutely necessay.
+:: Growth Spark Core Theme Functions
 
-Custom functions should be configured in functions.php
-**/
-
+**********************************************************************/
 
 /* --------------------------------------------------------------------
-:: Auto-Includer
 
-Loads PHP files from the /includes/ directory.
+:: Test for Permitted Filenames
 
--------------------------------------------------------------------- */
+Used by the auto-includer in functions.php
 
-/* --------------------------------------------------------------------
-Test for Permitted Filenames
 -------------------------------------------------------------------- */
 function gs_permitted_file($included_file) {
 
@@ -31,9 +25,9 @@ function gs_permitted_file($included_file) {
                 );
 
   $required = array(
-                'widget.',
-                'cpt.',
-                'module.'
+                'widget_',
+                'cpt_',
+                'module_'
                 );
 
   $result = false;
@@ -54,85 +48,12 @@ function gs_permitted_file($included_file) {
 
 }
 
-/* --------------------------------------------------------------------
-Include Permitted PHP files located in /includes/
--------------------------------------------------------------------- */
-foreach (glob(__DIR__ . '/*.php') as $file) {
-
-  if ( gs_permitted_file($file) ) {
-    include_once $file;
-  }
-
-}
-
-/* --------------------------------------------------------------------
-Include Permitted PHP files located in direct sub-directories of /includes/
--------------------------------------------------------------------- */
-foreach (glob(__DIR__ . '/*/*.php') as $file) {
-
-  if ( gs_permitted_file($file) ) {
-    include_once $file;
-  }
-
-}
-
-/* --------------------------------------------------------------------
-
-:: Register & Enqueue Core Scripts & Stylesheet
-
--------------------------------------------------------------------- */
-function gs_enqueue_scripts() {
-  if (!is_admin()) {
-  // include modernizr in the head
-    wp_register_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.custom.js', array(), '1', false );
-    wp_enqueue_script( 'modernizr' );
-    // include comment-reply.js only when comments are present & threaded comments are enabled
-    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-      wp_enqueue_script( 'comment-reply' );
-    }
-
-	// Add scripts.js file in the footer
-    wp_register_script( 'gs-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'modernizr', 'jquery' ), '1', true );
-    wp_enqueue_script( 'gs-scripts' );
-
-  }
-}
-// enqueue base scripts and styles
-add_action('template_redirect', 'gs_enqueue_scripts', 1);
-
-
-/* --------------------------------------------------------------------
-
-:: Remove WP Version Number
-
--------------------------------------------------------------------- */
-remove_action('wp_head', 'wp_generator');
-
-
-/* --------------------------------------------------------------------
-
-:: JavaScript Variables
-
-Set global variables for use in JavaScript files
-
--------------------------------------------------------------------- */
-function gs_set_javascript_variables() {
-?>
-<script>
-    var siteurl = '<?php bloginfo('url'); ?>';
-    var templateurl = '<?php bloginfo('template_url'); ?>';
-</script>
-
-<?
-}
-add_action('wp_head', 'gs_set_javascript_variables', 1);
-
 
 /* --------------------------------------------------------------------
 
 :: GS Register Sidebar
 
-Function for registering sidebars via class-based templates.  
+Function for registering sidebars via class-based templates.
 
 -------------------------------------------------------------------- */
 function gs_register_sidebar($name, $template_type = 'sidebar') {
@@ -176,15 +97,54 @@ function gs_create_widget($name, $instance = '', $template_type = 'sidebar') {
 
 :: GS Comment Count
 
-Template for displaying comment count
+Template for displaying comment count.
 
 -------------------------------------------------------------------- */
-function gs_comment_count() {
+function gs_comment_count($zero = 'No Comments', $one = 'One Comment', $more = '% Comments', $separator = '|') {
   if((get_comments_number() > 0))  : 
-  ?>
-    &nbsp;| &nbsp;<a href="<?php the_permalink(); ?>#comments"><?php comments_number('no comments','1 comment','% comments'); ?></a>
-  <?php 
+    echo ' '.$separator.' <a href="'.get_permalink().'#comments">';
+    comments_number($zero, $one, $more);
+    echo '</a>';
   endif;
 }
+
+/* --------------------------------------------------------------------
+
+:: Custom Excerpt function - Differs from the_excerpt
+
+A different way to pull in an excerpt with in-template excerpt length. 
+Use is <php the_content_limit('length');> where 'length' is the number 
+of characters. Then that length can have a value passed to it either 
+hard-coded or as a theme option - <php the_content_limit($themeoption);>
+It can also be customized below so you can remove the paragraph tags 
+or enclose in any other tag.
+
+-------------------------------------------------------------------- */
+function gs_content_limit($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
+    $content = get_the_content($more_link_text, $stripteaser, $more_file);
+    $content = apply_filters('the_content', $content);
+    $content = str_replace(']]>', ']]&gt;', $content);
+    $content = strip_tags($content);
+
+   if (strlen($_GET['p']) > 0) {
+      echo "<p>";
+      echo $content;
+      echo "</p>";
+   }
+   else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
+        $content = substr($content, 0, $espacio);
+        $content = $content;
+        echo "<p>";
+        echo $content;
+        echo "...";
+        echo "</p>";
+   }
+   else {
+      echo "<p>";
+      echo $content;
+      echo "</p>";
+   }
+}
+
 
 ?>
