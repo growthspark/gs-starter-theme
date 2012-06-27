@@ -31,9 +31,9 @@ h1, h2, h3, h4 {
 	font-weight: normal;
 }
 
-h1 { font-size: 1.8em; }
-h2 { font-size: 1.6em; }
-h3 { font-size: 1.4em; }
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.5em; }
 h4 { font-size: 1.2em; }
 
 p, ul { 
@@ -102,7 +102,7 @@ Header
 	font-family: 'Oswald', sans-serif;
 	font-size: 1.3em;
 	float: left;
-	margin-right: 30px;
+	margin-right: 45px;
 }
 
 .nav-links li:last-child {
@@ -161,6 +161,7 @@ Homepage
 	display: block;
 	height: 15px;
 	width: 15px;
+	border-radius: 50px;
 	background: black;
 	float: left;
 	margin: 0 5px;
@@ -184,10 +185,24 @@ Homepage
 /* ----------------------------------------------------------
 Sidebar
 ------------------------------------------------------------- */
+.widget-container {
+	font-size: .85em;
+	line-height: 1.8;
+}
+
+.widget-container h4 {
+	font-size: 1.4em;
+}
+
+
 .side-widget {
 	border: 1px solid #ccc;
 	margin-bottom: 20px;
 	padding: 15px;
+}
+
+.feature-box-btn {
+	margin-top: 20px;
 }
 
 

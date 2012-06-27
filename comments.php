@@ -19,7 +19,7 @@ DISPLAY  COMMENTS
 ------------------------------------------------------------- */
 
 if ($comments) : ?>
-	<h2><?php comments_number('No Comments', '1 Comment', '% Comments' );?></h2>
+	<h3><?php comments_number('No Comments', 'One Comment', '% Comments' );?></h3>
 	<?php foreach ($comments as $comment) : ?>
 	<div class="comment clearfix">
 		<div style="float:left;">

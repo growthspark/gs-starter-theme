@@ -6,7 +6,6 @@
 
 					<article>
 						<h1><?php the_title(); ?></h1>
-						<p class="article-info">by <?php the_author();?> on <?php the_date(); ?> <?php gs_comment_count(); ?></p>
 						
 						<?php the_content(); ?>
 
