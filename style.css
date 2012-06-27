@@ -13,10 +13,6 @@ Author URI: http://growthspark.com
 General Formatting
 ------------------------------------------------------------- */
 
-html{
-    overflow:scroll;
-}
-
 html, body {
 	width: 100%;
 	overflow-x: hidden;
@@ -59,8 +55,12 @@ a:hover {
 Defaults set in grid.css
 ------------------------------------------------------------- */
 
+.container {
+	padding: 0 15px;
+}
+
 .row {
-	width: 960px;
+	width: 930px;
 	margin: 20px auto 0 auto; 
 }
 
