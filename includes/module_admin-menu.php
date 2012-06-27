@@ -51,11 +51,6 @@ function gs_custom_menu_order($menu_ord) {
 			'separator1',
 			'edit.php?post_type=page',
 			'edit.php',
-			'edit.php?post_type=news',
-			'edit.php?post_type=events',
-			'edit.php?post_type=press-releases',
-			'edit.php?post_type=team',
-			'edit.php?post_type=slide'
 		);
 
 	/* -- DEFAULTS -- */
