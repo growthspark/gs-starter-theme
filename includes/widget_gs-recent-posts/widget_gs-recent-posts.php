@@ -14,35 +14,35 @@ Created by Sean Butze for Growth Spark
 /* ----------------------------------------------------------
 Register the plugin stylesheets
 ------------------------------------------------------------- */
-function queue_super_rp_admin_scripts() {
-    wp_register_style( 'rppadmin-css', get_template_directory_uri() .'/includes/widget-recent-posts-plus-plus/css/rpp-admin.css', array(), '1', 'all' );
-    wp_enqueue_style( 'rppadmin-css' );
+function queue_gsrp_admin_scripts() {
+    wp_register_style( 'gsrp-admin-styles', get_template_directory_uri() .'/includes/widget_gs-recent-posts/css/gsrp-admin.css', array(), '1', 'all' );
+    wp_enqueue_style( 'gsrp-admin-styles' );
 
 }
-	add_action('admin_enqueue_scripts', 'queue_super_rp_admin_scripts', 1);
+	add_action('admin_enqueue_scripts', 'queue_gsrp_admin_scripts', 1);
 
-function queue_super_rp_scripts() {
+function queue_gsrp_scripts() {
 	if ( !is_admin() ) {
-	    wp_register_style( 'rpp-css', get_template_directory_uri() .'/includes/widget-recent-posts-plus-plus/css/recent-posts-plus-plus.css', array(), '1', 'all' );
-	    wp_enqueue_style( 'rpp-css' );
+	    wp_register_style( 'gsrp-styles', get_template_directory_uri() .'/includes/widget_gs-recent-posts/css/gs-recent-posts.css', array(), '1', 'all' );
+	    wp_enqueue_style( 'gsrp-styles' );
 	}
 
 }
-	add_action('wp_enqueue_scripts', 'queue_super_rp_scripts', 1);
+	add_action('wp_enqueue_scripts', 'queue_gsrp_scripts', 1);
 
 /* ----------------------------------------------------------
 Set Thumbnail Size
 ------------------------------------------------------------- */
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
-	add_image_size('rpp_thumb', 75, 75, true);
+	add_image_size('gsrp_thumb', 75, 75, true);
 }	
 
 
 /* ----------------------------------------------------------
 Excerpt Length Function
 ------------------------------------------------------------- */
-function super_rp_excerpt_length($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
+function gsrp_excerpt_length($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
     $content = get_the_content($more_link_text, $stripteaser, $more_file);
     $content = apply_filters('the_content', $content);
     $content = str_replace(']]>', ']]&gt;', $content);
@@ -71,7 +71,7 @@ function super_rp_excerpt_length($max_char, $more_link_text = '(more...)', $stri
 /* ----------------------------------------------------------
 Create the Widget
 ------------------------------------------------------------- */
-class Recent_Posts_Plus_Plus extends WP_Widget {
+class Widget_GS_Recent_Posts extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -112,11 +112,11 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 			$ctr += 1;
 			?>
 
-			<div class="rpp-post rpp-post-<?php echo $ctr; ?>">
+			<div class="gsrp-post gsrp-post-<?php echo $ctr; ?>">
 
 				<?php if ( $thumbnail != 'none' && $thumbnail != '' ) { ?>
 
-					<div class="rpp-thumb <?php echo $thumbnail; ?>"><?php the_post_thumbnail('rpp_thumb'); ?></div>
+					<div class="gsrp-thumb <?php echo $thumbnail; ?>"><?php the_post_thumbnail('rpp_thumb'); ?></div>
 
 				<?php } ?>
 
@@ -124,7 +124,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 
 				<?php if ( $date_format != 'none' && $date_format != '' ) { ?>
 
-					<div class="rpp-date"><?php the_time($date_format); ?></div>
+					<div class="gsrp-date"><?php the_time($date_format); ?></div>
 
 				<?php } ?>
 
@@ -132,10 +132,10 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 
 				<?php
 				if ( $excerpt > 0 ) {
-				 	super_rp_excerpt_length($excerpt); ?>
-					<div class="rpp-more">
+				 	gsrp_excerpt_length($excerpt); ?>
+					<div class="gsrp-more">
 						<a href=
-						"<?php the_permalink(); ?>" class="rpp-more-link">Read More</a>
+						"<?php the_permalink(); ?>" class="gsrp-more-link">Read More</a>
 					</div>
 				<?php }  ?>
 			</div>
@@ -223,7 +223,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id('num_posts'); ?>"><?php _e('# of Posts:'); ?></label>
-			<select class="widefat" id="rpp-num-posts" name="<?php echo $this->get_field_name('num_posts'); ?>">
+			<select class="widefat" id="gsrp-num-posts" name="<?php echo $this->get_field_name('num_posts'); ?>">
 
 			<?php
 			for ($i = 1; $i <= 10; $i++) {
@@ -239,7 +239,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id('excerpt_length'); ?>"><?php _e('Excerpt Length:'); ?></label> 
-			<input class="widefat" id="rpp-excerpt-length" name="<?php echo $this->get_field_name('excerpt_length'); ?>" type="text" value="<?php echo $excerpt_length; ?>" />
+			<input class="widefat" id="gsrp-excerpt-length" name="<?php echo $this->get_field_name('excerpt_length'); ?>" type="text" value="<?php echo $excerpt_length; ?>" />
 			[ 0 = No Excerpt ]
 		</p>
 
@@ -247,7 +247,7 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('date_format'); ?>"><?php _e('Date Format:'); ?></label>
 
-			<select class="widefat" id="rpp-date-format" name="<?php echo $this->get_field_name('date_format'); ?>">
+			<select class="widefat" id="gsrp-date-format" name="<?php echo $this->get_field_name('date_format'); ?>">
 			
 				<option value="none">(no date)</option>
 
@@ -272,15 +272,15 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('thumbnail'); ?>"><?php _e('Thumbnails:'); ?></label>
 
-			<select class="widefat" id="rpp-thumbnail-field" name="<?php echo $this->get_field_name('thumbnail'); ?>">
+			<select class="widefat" id="gsrp-thumbnail-field" name="<?php echo $this->get_field_name('thumbnail'); ?>">
 			
 				<option value="none">(no thumbnails)</option>
 
 				<?php
 				$thumbs = array(
-					'rpp-thumb-left' => 'Left Aligned', 
-					'rpp-thumb-right' => 'Right Aligned', 
-					'rpp-thumb-noalign' => 'No Alignment'
+					'gsrp-thumb-left' => 'Left Aligned', 
+					'gsrp-thumb-right' => 'Right Aligned', 
+					'gsrp-thumb-noalign' => 'No Alignment'
 					);
 				
 				foreach ($thumbs as $a => $b) {
@@ -300,6 +300,6 @@ class Recent_Posts_Plus_Plus extends WP_Widget {
 }
 
 // register the widget
-add_action( 'widgets_init', create_function( '', 'register_widget( Recent_Posts_Plus_Plus );' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget( Widget_GS_Recent_Posts );' ) );
 
 ?>

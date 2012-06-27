@@ -20,14 +20,14 @@ Class GS_Widget_Templates {
         'before_widget' => '<div id="%1$s" class="%2$s side-widget">',
         'after_widget' => '</div>',
         'before_title' => '<h4>',
-        'after_title' => '<h4>',
+        'after_title' => '</h4>',
     );
 
   public $home = array( 
         'before_widget' => '<div id="%1$s" class="home-widget %2$s four columns"><div class="widget-container">',
         'after_widget' => '</div></div>',
         'before_title' => '<h4>',
-        'after_title' => '<h4>',
+        'after_title' => '</h4>',
     );
 
 }

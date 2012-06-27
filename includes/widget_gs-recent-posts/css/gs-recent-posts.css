@@ -1,17 +1,17 @@
 /* Base Styles For Widget Display */
 
-.rpp-thumb {
+.gsrp-thumb {
 	margin: 0 .5em .1em 0;
 }
 
-.rpp-thumb-left {
+.gsrp-thumb-left {
 	float: left;
 }
 
-.rpp-thumb-right {
+.gsrp-thumb-right {
 	float: right;
 }
 
-.rpp-date {
+.gsrp-date {
 	font-size: .9em;
 }
