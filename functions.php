@@ -80,13 +80,14 @@ function gs_theme_setup() {
 
 
 /* --------------------------------------------------------------------
-:: Configure Theme Stylesheets
+:: Configure Theme Styles
 
 http://codex.wordpress.org/Function_Reference/wp_enqueue_style
 -------------------------------------------------------------------- */
 function gs_load_stylesheets() {
-    wp_enqueue_style( 'gs-base', get_template_directory_uri() . '/css/base.css', array(), '1', 'all' );
-    wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('gs-base'), '1', 'all' );
+	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald', array(), '1', 'all' );
+    wp_enqueue_style( 'gs-base', get_template_directory_uri() . '/css/base.css', array('google-fonts'), '1', 'all' );
+    wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('google-fonts', 'gs-base'), '1', 'all' );
 }
 add_action('wp_enqueue_scripts', 'gs_load_stylesheets');
 
@@ -137,7 +138,7 @@ function gs_load_modernizr_tests() {
 			// Test for border-radius support (effectively tests for IE 6-8)
 		    test : Modernizr.borderradius,
 		    // Load Selectivizr to enable CSS selectors in IE 6-8
-		    nope : [<?php bloginfo('template_url');?> + '/js/selectivizr.min.js']
+		    nope : ['<?php bloginfo('template_url');?>/js/selectivizr.min.js']
 
 	}]);
 </script>
