@@ -150,4 +150,4 @@ class GS_Feature_Box extends WP_Widget {
 } // class GS_Feature_Box
 
 // register GS_Feature_Box widget
-add_action( 'widgets_init', create_function( '', 'register_widget( GS_Feature_Box );' ) );
+add_action( 'widgets_init', create_function( '', "register_widget( GS_Feature_Box );" ) );
