@@ -43,7 +43,6 @@ if( !function_exists('gs_custom_mce_buttons') ){
 			'bold', 
 			'italic', 
 			'underline',
-			'sup',
 			'bullist', 
 			'numlist', 
 			'blockquote', 

@@ -25,10 +25,6 @@ function gs_remove_admin_menus(){
 
     if ( function_exists('remove_menu_page') ) { 
 
-    	remove_menu_page('edit.php'); 
-
-    	remove_menu_page('edit-comments.php'); 
-
     	// Remove the Tools tab for all users below Admin
     	if ( !current_user_can('remove_users') ) {
         remove_menu_page('tools.php');  
@@ -54,6 +50,7 @@ function gs_custom_menu_order($menu_ord) {
 			'index.php',
 			'separator1',
 			'edit.php?post_type=page',
+			'edit.php',
 			'edit.php?post_type=news',
 			'edit.php?post_type=events',
 			'edit.php?post_type=press-releases',
