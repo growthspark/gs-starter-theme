@@ -27,7 +27,6 @@ if (is_object($wp_roles)) {
 	-------------------------------------------------------------------- */
 	$wp_roles->add_cap( 'editor', 'edit_theme_options' );
 	$wp_roles->remove_cap( 'editor', 'manage_links' );
-	$wp_roles->remove_cap( 'editor', 'moderate_comments' );
 
 }
 
