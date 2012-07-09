@@ -24,15 +24,23 @@ function gs_permitted_file($included_file) {
                 '(3)'
                 );
 
-  $required = array(
+  $permitted = array(
                 'widget_',
                 'cpt_',
-                'module_'
+                'inc_',
+                'admin-branding',
+                'admin-menu',
+                'logo-settings',
+                'remove-dashboard-widgets',
+                'remove-default-widgets',
+                'sidebars-config',
+                'tinymce-editor',
+                'user-capabilities'
                 );
 
   $result = false;
 
-  foreach ( $required as $test ) {
+  foreach ( $permitted as $test ) {
      if ( strpos($included_file, $test) ) {
        $result = true;
     }
@@ -100,7 +108,7 @@ function gs_create_widget($name, $instance = '', $template_type = 'sidebar') {
 Template for displaying comment count.
 
 -------------------------------------------------------------------- */
-function gs_comment_count($zero = 'No Comments', $one = 'One Comment', $more = '% Comments', $separator = '|') {
+function gs_comment_count($zero = 'No Comments', $one = '1 Comment', $more = '% Comments', $separator = '|') {
   if((get_comments_number() > 0))  : 
     echo ' '.$separator.' <a href="'.get_permalink().'#comments">';
     comments_number($zero, $one, $more);
@@ -108,14 +116,34 @@ function gs_comment_count($zero = 'No Comments', $one = 'One Comment', $more = '
   endif;
 }
 
+
+/* --------------------------------------------------------------------
+
+:: GS Show Categories
+
+Template for displaying a post's categories.  
+Extends get_the_category_list() by adding parameters for start & end
+separators.
+
+-------------------------------------------------------------------- */
+function gs_show_categories($start_separator = ' | ', $cat_separator = ', ', $end_separator ='') {
+
+  $categories = get_the_category_list($cat_separator);
+  if ( $categories ) {
+    return $start_separator.$categories.$end_separator;
+  }
+
+}
+
+
 /* --------------------------------------------------------------------
 
 :: Custom Excerpt function - Differs from the_excerpt
 
 A different way to pull in an excerpt with in-template excerpt length. 
-Use is <php the_content_limit('length');> where 'length' is the number 
+Use is <php gs_content_limit('length');> where 'length' is the number 
 of characters. Then that length can have a value passed to it either 
-hard-coded or as a theme option - <php the_content_limit($themeoption);>
+hard-coded or as a theme option - <php gs_content_limit($themeoption);>
 It can also be customized below so you can remove the paragraph tags 
 or enclose in any other tag.
 
