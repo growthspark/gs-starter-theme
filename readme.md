@@ -12,7 +12,7 @@ This feature can be found within gs_theme_setup() in functions.php.
 
 ## Custom Admin Features
 
-The /includes/ directory now comes stock with a variety of functions which customize the WordPress admin interface for better usability:
+The /includes/ directory now comes stocked with a variety of functions which customize the WordPress admin interface for better usability:
 
 ### Theme Styles applied to TinyMCE Editor 
 
