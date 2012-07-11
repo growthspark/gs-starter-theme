@@ -17,6 +17,8 @@ I. Apply Theme Stylesheet to the TinyMCE Editor
 
 -------------------------------------------------------------------- */
 // Function finds the specified stylesheet from the root of the current theme's folder.
+add_editor_style('css/web-fonts.css');
+add_editor_style('css/base.css');
 add_editor_style('style.css');
 
 
