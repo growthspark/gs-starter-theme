@@ -63,8 +63,6 @@ function growthspark_logo_options_init() {
 	);
 
 	add_settings_field( 'logo_image', __( 'Logo Image',     'growthspark' ), 'growthspark_settings_field_logo_image', 'logo_options', 'general' );
-	add_settings_field( 'logo_width', __( 'Logo Width',     'growthspark' ), 'growthspark_settings_field_logo_width', 'logo_options', 'general' );
-	add_settings_field( 'logo_height', __( 'Logo Height',     'growthspark' ), 'growthspark_settings_field_logo_height', 'logo_options', 'general' );
 
 }
 add_action( 'admin_init', 'growthspark_logo_options_init' );
@@ -120,8 +118,7 @@ add_action( 'admin_menu', 'growthspark_logo_options_add_page' );
 function growthspark_get_default_logo_options() {
 	$default_logo_options = array(
 		'logo_image' => get_template_directory_uri().'/img/logo.png',
-		'logo_width' => 217,
-		'logo_height' => 80,
+
 	);
 
 	return apply_filters( 'growthspark_default_logo_options', $default_logo_options );
@@ -161,47 +158,6 @@ function growthspark_settings_field_logo_image() {
 
 }
 
-
-/**
- * Renders the Logo Max Width setting field.
- *
- * 
- */
-function growthspark_settings_field_logo_width() {
-	$options = growthspark_get_logo_options();
-
-			// Sanitize
-			$id = 'logo_width';
-			$value = ( isset($options[$id]) && !empty($options[$id]) ) ? intval($options[$id]) : '';
-			$field = '<p class="logo-width">
-				<input name="growthspark_logo_options[' . $id . ']' . '" type="text" value="' . $value . '" size="4" maxlength="4" />
-				<span class="description">pixels</span>
-			</p>';
-
-		echo $field;
-
-}
-
-/**
- * Renders the Logo Max Height setting field.
- *
- * 
- */
-function growthspark_settings_field_logo_height() {
-	$options = growthspark_get_logo_options();
-
-			// Sanitize
-			$id = 'logo_height';
-			$value = ( isset($options[$id]) && !empty($options[$id]) ) ? intval($options[$id]) : '';
-			$field = '<p class="logo-height">
-				<input name="growthspark_logo_options[' . $id . ']' . '" type="text" value="' . $value . '" size="4" maxlength="4" />
-				<span class="description">pixels</span>
-			</p>';
-
-		echo $field;
-
-}
-
 /**
  * Returns the options array.
  *
@@ -229,7 +185,6 @@ function growthspark_logo_options_render_page() {
  * Sanitize and validate form input. Accepts an array, return a sanitized array.
  *
  * @see growthspark_logo_options_init()
- * @todo set up Reset Options action
  *
  * @since Version 1.1
  */
@@ -237,8 +192,32 @@ function growthspark_logo_options_validate( $input ) {
 	$output = $defaults = growthspark_get_default_logo_options();
 
 	$output['logo_image'] = esc_url($input['logo_image']);
-	$output['logo_width'] = intval($input['logo_width']);
-	$output['logo_height'] = intval($input['logo_height']);
 
 	return apply_filters( 'growthspark_logo_options_validate', $output, $input, $defaults );
+}
+
+
+/**
+ * Functions for returning key logo data 
+ *
+ *
+ * @since Version 1.1
+ */
+function gs_get_logo() {
+	    $defaults = growthspark_get_default_logo_options();
+        $option = get_option('growthspark_logo_options', $defaults);
+        return $option['logo_image'];
+}
+function gs_logo_width() {
+	    $defaults = growthspark_get_default_logo_options();
+        $option = get_option('growthspark_logo_options', $defaults);
+        $logo_size = getimagesize($option['logo_image']);
+        return $logo_size[0];
+}
+
+function gs_logo_height() {
+	    $defaults = growthspark_get_default_logo_options();
+        $option = get_option('growthspark_logo_options', $defaults);
+        $logo_size = getimagesize($option['logo_image']);
+        return $logo_size[1];
 }
