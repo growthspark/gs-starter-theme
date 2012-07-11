@@ -67,9 +67,9 @@ function gs_theme_setup() {
 http://codex.wordpress.org/Function_Reference/wp_enqueue_style
 -------------------------------------------------------------------- */
 function gs_load_stylesheets() {
-	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald', array(), '1', 'all' );
-    wp_enqueue_style( 'gs-base', get_template_directory_uri() . '/css/base.css', array('google-fonts'), '1', 'all' );
-    wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('google-fonts', 'gs-base'), '1', 'all' );
+	wp_enqueue_style( 'web-fonts', get_template_directory_uri() . '/css/web-fonts.css', array(), '1', 'all' );
+    wp_enqueue_style( 'gs-base', get_template_directory_uri() . '/css/base.css', array('web-fonts'), '1', 'all' );
+    wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('web-fonts', 'gs-base'), '1', 'all' );
 }
 add_action('wp_enqueue_scripts', 'gs_load_stylesheets');
 
