@@ -15,7 +15,7 @@ Created by Sean Butze for Growth Spark
 Register the plugin stylesheets
 ------------------------------------------------------------- */
 function queue_gsrp_admin_scripts() {
-    wp_register_style( 'gsrp-admin-styles', get_template_directory_uri() .'/includes/widget_gs-recent-posts/css/gsrp-admin.css', array(), '1', 'all' );
+    wp_register_style( 'gsrp-admin-styles', get_template_directory_uri() .'/includes/widget.gs-recent-posts/css/gsrp-admin.css', array(), '1', 'all' );
     wp_enqueue_style( 'gsrp-admin-styles' );
 
 }
@@ -23,7 +23,7 @@ function queue_gsrp_admin_scripts() {
 
 function queue_gsrp_scripts() {
 	if ( !is_admin() ) {
-	    wp_register_style( 'gsrp-styles', get_template_directory_uri() .'/includes/widget_gs-recent-posts/css/gs-recent-posts.css', array(), '1', 'all' );
+	    wp_register_style( 'gsrp-styles', get_template_directory_uri() .'/includes/widget.gs-recent-posts/css/gs-recent-posts.css', array(), '1', 'all' );
 	    wp_enqueue_style( 'gsrp-styles' );
 	}
 

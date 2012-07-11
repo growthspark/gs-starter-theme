@@ -26,7 +26,11 @@
 		<header id="page-header" class="container" role="banner">
 			<div class="row header-row">
 				<div class="logo-container four columns no-border">
-					<a href="<?php bloginfo('url'); ?>" class="logo ir" style="background:no-repeat url(<?php if (function_exists('header_image')){ header_image(); } ?>);">
+					<?php 
+					$defaults = growthspark_get_default_logo_options();
+       				$option = get_option('growthspark_logo_options', $defaults);
+					?>
+					<a href="<?php bloginfo('url'); ?>" class="logo ir" style="background:no-repeat url(<?php echo $option['logo_image']; ?>);">
 						<?php bloginfo('name'); ?>
 					</a>
 				</div>

@@ -25,9 +25,9 @@ function gs_permitted_file($included_file) {
                 );
 
   $permitted = array(
-                'widget_',
-                'cpt_',
-                'inc_',
+                'widget.',
+                'cpt.',
+                'inc.',
                 'admin-branding',
                 'admin-menu',
                 'logo-settings',

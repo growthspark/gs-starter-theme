@@ -22,3 +22,21 @@ Hide "Customize" Link in Themes Panel
 #customize-current-theme-link {
 	display: none;
 }
+
+/* --------------------------------------------------------------------
+Media Uploader
+-------------------------------------------------------------------- */
+#media-upload  #tab-type_url {
+	display: none !important;
+}
+
+#media-upload .after-file-upload {
+	display: none !important;
+}
+
+/* --------------------------------------------------------------------
+Logo Settings Page
+-------------------------------------------------------------------- */
+.upload-image-preview {
+	background: #ddd;
+}
