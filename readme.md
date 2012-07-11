@@ -1,4 +1,4 @@
-# Growth Spark Starter Theme v1.1 - Overview
+# Growth Spark Starter Theme v1.1 - Features Overview
 
 ## Auto-Includer
 
