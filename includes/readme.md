@@ -6,13 +6,10 @@ USAGE:
 
 * In order for new files to be included, their names must be prefixed with one of the following:
 
-cpt. 
-(for Custom Post Types)
+** cpt.     (for Custom Post Types)
 
-widgets.  
-(for Custom Widgets)
+** widget.  (for Custom Widgets)
 
-inc.
-(generic includes prefix for all other files)
+** inc.     (generic includes prefix for all other files)
 
 * Filenames containing the word "sample" will never be included (ie widget.sample.php, cpt.sample.php)
