@@ -99,7 +99,7 @@ td { vertical-align: top; }
 }
 
 /* ----------------------------------------------------------
-:: Alignment
+:: WordPress Classes
 ------------------------------------------------------------- */
 
 .alignleft {
@@ -117,6 +117,11 @@ td { vertical-align: top; }
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#tinymce {
+  padding: 10px;
+  width: auto;
 }
 
 
