@@ -1,22 +1,28 @@
-# Growth Spark Starter Theme v1.1 - Release Notes
+# Growth Spark Starter Theme v1.1 - Overview
 
-## Auto-Loading for Includes
+## Auto-Includer
 
-Updated core.php file will automatically load PHP files placed in the /includes/ folder or in the root of any direct sub-directories (ie /includes/folder-name).
+Version 1.1 introduces an Auto-Include feature which will automatically include() PHP files placed in the /includes/ folder or in the root of any direct sub-directories of that folder(ie /includes/folder-name).
 
-This helps reduce clutter in the functions.php and eliminates the need to manually include each new file in functions.php.
+This helps reduce clutter in the functions.php file and eliminates the need to manually include each new file in functions.php.
 
-Files whose names are appended with -sample are not included (ie widget-sample.php).
+To prevent accidental including, there are file-naming conventions that must be followed.  See /includes/readme.md for details.
+
+This feature can be found within gs_theme_setup() in functions.php.
 
 ## Custom Admin Features
 
-New sub-folder of /includes/ called "admin" houses various modules which customize the WordPress admin interface:
+The /includes/ directory now comes stock with a variety of functions which customize the WordPress admin interface for better usability:
 
-### Theme Styles applied to TinyMCE Editor
+### Theme Styles applied to TinyMCE Editor 
+
+tinmyce-editor.php
 
 Visual styling of content in the TinyMCE Editor will reflect theme styles set in style.css, offering users a more realistic preview of what the live page will look like.
 
 ### Simplified TinyMCE Toolbar
+
+tinmyce-editor.php
 
 Allows customization of the TinyMCE toolbar.  Can be tweaked on a per-theme basis to suit clients' needs.
 
@@ -25,18 +31,47 @@ Defaults:
 * Justify, strikethrough, and spell-checker buttons disabled
 * Menu condensed to one row instead of two
 
+### Admin Branding
+
+logo-settings.php
+
+A new options panel under Appearance -> Logo allows the user to upload a logo for the website.  The logo image can then be generated dynamically on both the front-end as well as the admin panels.
+
+admin-branding.php
+
+A collection of functions that adds custom branding to the Admin panels.  The custom logo (set under Appearance -> Logo) is automatically added to both the login screen & the Dashboard screen.
+
 ### Customized Admin Menu Ordering
+
+admin-menu.php
 
 Defaults:
 * "Pages" tab is pushed to the top of the menu, just below "Dashboard".  Pages are usually the most used feature, plus it's important to have it next to Posts & other CPTs. 
 
 ### Custom User Capabilities
 
+user-capabilities.php
+
 Defaults:
-* Users with the "Editor" role now have the ability to manage Widgets, Menus, & Theme Options
+* Users with the "Editor" role have the ability to manage Widgets, Menus, & Theme Options
 * The "Tools" menu is hidden for all users below Admin
+* The "Plugin Editor" section is disabled for all users
+
+### Remove Dashboard Widgets
+
+remove-dashboard-widgets.php
+
+Supports the removal of unneeded dashboard widgets to provide a cleaner, less cluttered interface.
+
+### Remove Default Widgets
+
+remove-default-widgets.php
+
+De-clutters the Widgets panel (under Appearance -> Widgets) by removing unneeded sidebar widgets.
 
 ## Custom Post Type Boilerplate 
+
+cpt.sample.php
 
 Updated cpt-sample.php: Improved code organization and added variables to reduce the amount of customization needed to create a new CPT.
 
@@ -46,9 +81,9 @@ Now included with the theme are 2 custom widgets:
 
 ### Feature Box
 
-Simple text widget with added option for a "Read More" link / button.  Seems to be a feature that I need to implement a lot, and should help save development time.  Also eliminates need for hard-coding URLs.
+Simple text widget with an added option for a "Read More" link or button.  Eliminates the need for hard-coding buttons & URLs in widgets.
 
-### Recent Posts ++
+### GS Recent Posts
 
 Enhanced Recent Posts widget which supports:
 
@@ -56,11 +91,6 @@ Enhanced Recent Posts widget which supports:
 - Date formatting
 - Excerpts
 - Thumbnails
-
-## Default Templates
-
-I've added 2 default templates back in for index.php & front-page.php.  If these are useful for you we can leave them in, otherwise we can just strip them out and I'll work on an alternate version that has more extensive starting templates.
-
 
 ## Comments Template
 
@@ -74,7 +104,11 @@ Minified version of jQuery Cycle now included by default in /js/.  Starting sett
 
 ## CSS
 
-Added base.css (normalization) and grid.css (12-column grid system) to the /css/ folder.  These are to serve as examples, but with the expectation that they can be removed/altered/etc. 
+And updated version of base.css now contains the following:
+
+1. CSS Normalization
+2. Essential WordPress classes
+3. Fluid 12-column grid system
 
 Enqueue-ing of theme stylesheets has been moved to functions.php, with the expectation that stylesheets will be customized on a per-theme basis.   
 

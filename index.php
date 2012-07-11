@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php get_template_part('content', 'page-top'); ?>
+<?php get_template_part('subpage-top'); ?>
 
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -18,6 +18,6 @@
 
 				<?php endwhile; endif; ?>
 
-<?php get_template_part('content', 'page-bottom'); ?>
+<?php get_template_part('subpage-bottom'); ?>
 
 <?php get_footer(); ?>
