@@ -113,7 +113,8 @@ only when they're needed.
 -------------------------------------------------------------*/
 function gs_load_modernizr_tests() {
 ?>
-<script>
+<!-- Modernizr Tests -->
+<script type="text/javascript">
 	Modernizr.load([{
 			/* Support CSS Selectors in IE 6-8 */
 
@@ -124,6 +125,7 @@ function gs_load_modernizr_tests() {
 
 	}]);
 </script>
+<!--/ Modernizr Tests -->
 <?php
 }
 add_action('wp_footer', 'gs_load_modernizr_tests');
@@ -150,8 +152,8 @@ add_action('template_redirect', 'gs_load_jquery_cycle');
 function gs_jquery_cycle_settings() {
 	
 	if ( is_front_page() ) {  ?>
-
-	<script>
+	<!-- jQuery Cycle Settings -->
+	<script type="text/javascript">
 		jQuery(document).ready(function() {
 
 		  jQuery('#slideshow')
@@ -169,6 +171,7 @@ function gs_jquery_cycle_settings() {
 
 		});
 	</script>
+	<!--/ jQuery Cycle Settings -->
 	<?php 
 
 	}

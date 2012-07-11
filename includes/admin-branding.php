@@ -69,7 +69,7 @@ if (function_exists('get_custom_header')) {
         $option = get_option('growthspark_logo_options', $defaults);
         ?>
         <!-- Custom Dashboard Logo -->
-        <style>
+        <style type="text/css">
         .index-php .wrap h2:nth-child(2) {
             visibility: hidden;
             line-height: 1px;
