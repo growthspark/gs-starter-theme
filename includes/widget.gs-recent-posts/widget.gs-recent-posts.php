@@ -128,15 +128,18 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 
 				<?php } ?>
 
-					<strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong>
+					<h4 class="gsrp-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 
 				<?php
-				if ( $excerpt > 0 ) {
-				 	gsrp_excerpt_length($excerpt); ?>
+				if ( $excerpt > 0 ) { ?>
+					<div class="gsrp-excerpt">
+						<?php gsrp_excerpt_length($excerpt); ?>
+					</div>
 					<div class="gsrp-more">
 						<a href=
 						"<?php the_permalink(); ?>" class="gsrp-more-link">Read More</a>
 					</div>
+
 				<?php }  ?>
 			</div>
 			<?php endwhile; ?>
