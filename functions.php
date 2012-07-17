@@ -33,8 +33,8 @@ function gs_theme_setup() {
 	}
 	// Include Permitted PHP files located in direct sub-directories of /includes/
 	foreach (glob(__DIR__ . '/includes/*/*.php') as $file) {
-	  if ( gs_permitted_file($file) ) 
-	    include_once $file;
+		if ( gs_permitted_file($file) ) 
+		   include_once $file;
 	}
 
 	/* --------------------------------------------------------------------
