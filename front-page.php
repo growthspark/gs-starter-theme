@@ -12,14 +12,7 @@ Template Name: Home Page
 
 	   		<?php if ($slides->have_posts() ): while ($slides->have_posts() ) : $slides->the_post(); ?>
 
-				<div class="slide clearfix">
-					<div class="slide-text five columns">
-						<div class="container float-left">
-							<h1><?php the_title();?></h1>
-							<?php the_content();?>
-						</div>
-					</div>
-				</div><!--/ .slide -->
+	   			<?php get_template_part('templates/slider'); ?>
 
 			<?php endwhile; endif; wp_reset_query(); ?>
 
