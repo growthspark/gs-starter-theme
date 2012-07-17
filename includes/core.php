@@ -57,6 +57,90 @@ function gs_permitted_file($included_file) {
 }
 
 
+function gs_is_admin_include($included_file) {
+
+  $result = false;
+
+   if ( strpos($included_file, 'includes/admin/') ) {
+     $result = true;
+  }
+
+  return $result;
+
+}
+
+
+function gs_permitted_include($included_file) {
+
+  $permitted = array(
+                'widget.',
+                'cpt.',
+                'inc.'
+                );
+
+  $result = false;
+
+  foreach ( $permitted as $test ) {
+     if ( strpos($included_file, $test) ) {
+       $result = true;
+    }
+  }
+
+  return $result;
+
+}
+
+function gs_default_admin_include($included_file) {
+
+  $permitted = array(
+                'admin-branding',
+                'admin-menu',
+                'logo-settings',
+                'remove-dashboard-widgets',
+                'remove-default-widgets',
+                'sidebars-config',
+                'tinymce-editor',
+                'user-capabilities'
+                );
+
+  $result = false;
+
+  foreach ( $permitted as $test ) {
+     if ( strpos($included_file, $test) ) {
+       $result = true;
+    }
+  }
+  
+  return $result;
+
+}
+
+
+function gs_forbidden_filename($included_file) {
+
+  $forbidden = array( 
+                'sample',
+                'core.php',
+                'Copy of',
+                '- Copy',
+                '(1)',
+                '(2)',
+                '(3)'
+                );
+
+  $result = false;
+
+  foreach ( $forbidden as $test ) {
+     if ( strpos($included_file, $test) ) {
+       $result = true;
+    }
+  }
+
+  return $result;
+
+}
+
+
 /* --------------------------------------------------------------------
 
 :: GS Register Sidebar
