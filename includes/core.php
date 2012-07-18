@@ -31,6 +31,7 @@ function gs_permitted_file($included_file) {
                 'admin-branding',
                 'admin-menu',
                 'logo-settings',
+                'recent-drafts-widget',
                 'remove-dashboard-widgets',
                 'remove-default-widgets',
                 'sidebars-config',
