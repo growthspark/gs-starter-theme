@@ -5,16 +5,42 @@
 ***********************************************************************/
 
 /* --------------------------------------------------------------------
-Header Image (Appearance -> Header)
+Dashboard
 -------------------------------------------------------------------- */
-#headimg {
-	background-color: #DDD;
+#gs_dashboard_recent_drafts p.sub {
+	padding: 5px 0;
+	color: #8F8F8F;
+	font-size: 14px;
+	border-bottom: #ECECEC 1px solid;
 }
 
-#headimg h1,
-#headimg #desc {
-	display: none;
+#gs_dashboard_recent_drafts .table_content {
+	float: left;
+	width: 45%;
 }
+
+#gs_dashboard_recent_drafts .wrapper {
+	margin-top: -20px;
+	margin-bottom: 20px;
+}
+
+#gs_dashboard_recent_drafts .table_content:nth-child(even) {
+	float: right;
+}
+
+#gs_dashboard_recent_drafts li {
+	margin-bottom: 9px;
+}
+
+#gs_dashboard_recent_drafts h4{
+	margin-bottom: 0;
+}
+
+
+#gs_dashboard_recent_drafts:before, #gs_dashboard_recent_drafts:after { content: ""; display: table; }
+#gs_dashboard_recent_drafts:after { clear: both; }
+#gs_dashboard_recent_drafts { *zoom: 1; }
+
 
 /* --------------------------------------------------------------------
 Hide "Customize" Link in Themes Panel
@@ -22,6 +48,7 @@ Hide "Customize" Link in Themes Panel
 #customize-current-theme-link {
 	display: none;
 }
+
 
 /* --------------------------------------------------------------------
 Media Uploader
@@ -34,9 +61,18 @@ Media Uploader
 	display: none !important;
 }
 
+
 /* --------------------------------------------------------------------
 Logo Settings Page
 -------------------------------------------------------------------- */
 .upload-image-preview {
 	background: #ddd;
 }
+
+
+/* --------------------------------------------------------------------
+Misc
+-------------------------------------------------------------------- */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
