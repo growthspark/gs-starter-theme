@@ -18,7 +18,7 @@ class GS_Recent_Drafts_Widget {
 	 * "Posts".
 	 *
 	 */
-	public $types = array('post', 'page');
+	public $types = array('page', 'post');
 
 
 	/**
@@ -38,17 +38,30 @@ class GS_Recent_Drafts_Widget {
 
 		$post_type = get_post_type_object($type);
 		$type_label = $post_type->labels->name; 
+		$numposts = 3;
 
 		if ( !$drafts ) {
+
+			// Gets all drafts
+			$all_drafts_query = new WP_Query( array(
+				'post_type' => $type,
+				'post_status' => 'draft',
+				'author' => $GLOBALS['current_user']->ID,
+				'orderby' => 'modified',
+				'order' => 'DESC'
+			) );
+
+			// Gets only the drafts to display
 			$drafts_query = new WP_Query( array(
 				'post_type' => $type,
 				'post_status' => 'draft',
 				'author' => $GLOBALS['current_user']->ID,
-				'posts_per_page' => 5,
+				'posts_per_page' => $numposts,
 				'orderby' => 'modified',
 				'order' => 'DESC'
 			) );
 			$drafts =& $drafts_query->posts;
+			$total_drafts =& $all_drafts_query->posts;
 		}
 
 		if ( $drafts && is_array( $drafts ) ) {
@@ -67,18 +80,11 @@ class GS_Recent_Drafts_Widget {
 			<ul>
 				<li><?php echo join( "</li>\n<li>", $list ); ?></li>
 			</ul>
-			<p><a href="edit.php?post_status=draft&post_type=<?php echo $type; ?>" ><?php _e('View all'); ?> &rarr;</a></p>
+			<?php if ( count($total_drafts) > $numposts ) : ?>
+				<p><a href="edit.php?post_status=draft&post_type=<?php echo $type; ?>" ><?php _e('View all'); ?> &rarr;</a></p>
+			<?php endif; ?>
 		</div>
-
-		
-
-	<?php
-		} else {
-			?>
-			<div class="table table_content">
-			<p class="sub"><?php echo $type_label; ?></p><?php
-			_e('There are no drafts at the moment');
-			?></div><?php
+		<?php
 		}
 	}
 
@@ -94,10 +100,27 @@ class GS_Recent_Drafts_Widget {
 
 			$types = $this->types;
 
-			foreach ($types as $type) {
+			$all_drafts_query = new WP_Query( array(
+				'post_type' => $types,
+				'post_status' => 'draft',
+				'author' => $GLOBALS['current_user']->ID,
+				'posts_per_page' => 5,
+				'orderby' => 'modified',
+				'order' => 'DESC'
+			) );
 
-				$this->recent_drafts_loop($drafts, $type);
+			$are_drafts =& $all_drafts_query->posts;
 
+			if ( $are_drafts and is_array($are_drafts) ) {
+
+				foreach ($types as $type) {
+					$this->recent_drafts_loop($drafts, $type);
+				}
+
+			} else {
+				?><div class="table table_content"><p class="no-drafts"><?php
+				_e('There are no drafts at the moment');
+				?></p></div><?php
 			}
 
 			?>
