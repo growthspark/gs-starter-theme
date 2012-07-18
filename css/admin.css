@@ -36,6 +36,9 @@ Dashboard
 	margin-bottom: 0;
 }
 
+#gs_dashboard_recent_drafts .no-drafts {
+	margin-top: 25px;
+}
 
 #gs_dashboard_recent_drafts:before, #gs_dashboard_recent_drafts:after { content: ""; display: table; }
 #gs_dashboard_recent_drafts:after { clear: both; }
