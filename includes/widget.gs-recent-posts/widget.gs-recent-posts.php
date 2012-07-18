@@ -1,7 +1,7 @@
 <?php
 /**************************************************************
 
-Recent Posts ++ :: Growth Spark Theme Version
+GS Recent Posts
 
 An Enhanced Recent Posts Widget
 
@@ -79,7 +79,7 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 	public function __construct() {
 		//global $wid, $wname;
 		parent::__construct(
-	 		'recent_posts_plus_plus', // Base ID
+	 		'gs_recent_posts', // Base ID
 			'Recent Posts', // Name
 			array( 'description' => __( 'Displays a list of your most recent posts.', 'text_domain' ), ) // Args
 		);
@@ -256,10 +256,11 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 
 				<?php
 				$dates = array(
-					'F j, Y' => 'May 1, 2012', 
-					'F j' => 'May 1', 
-					'm/d/Y' => '5/1/2012', 
-					'm/d/y' => '5/1/12'
+					'F j, Y' => 'June 1, 2012',
+					'f j Y' => 'Jun 1 2012', 
+					'F j' => 'June 1', 
+					'm/d/Y' => '6/1/2012', 
+					'm/d/y' => '6/1/12'
 					);
 				
 				foreach ($dates as $k => $v) {
