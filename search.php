@@ -2,15 +2,13 @@
 
 <?php get_template_part('templates/subpage-top'); ?>
 
+				<?php get_search_form(); ?>
+
+				<h4>Showing results for: "<?php the_search_query(); ?>"</h4>
+
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-					<article>
-						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						<p class="article-info">by <?php the_author();?> on <?php the_date(); ?> <?php gs_comment_count(); ?></p>
-						
-						<?php the_excerpt(); ?>
-
-					</article>
+					<?php get_template_part('templates/post'); ?>
 
 				<?php endwhile; endif; ?>
 
