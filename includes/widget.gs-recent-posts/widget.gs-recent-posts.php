@@ -112,7 +112,7 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 			$ctr += 1;
 			?>
 
-			<div class="gsrp-post gsrp-post-<?php echo $ctr; ?>">
+			<div class="gsrp-post gsrp-post-<?php echo $ctr; ?> clearfix">
 
 				<?php if ( $thumbnail != 'none' && $thumbnail != '' ) { ?>
 
