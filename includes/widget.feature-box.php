@@ -57,7 +57,11 @@ class GS_Feature_Box extends WP_Widget {
 
 		<div class="feature-box">
 
-			<?php echo !empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?><?php 
+		<div class="feature-box-content">
+			<?php echo !empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?>
+		</div>
+
+		<?php 
 
 		if ( $linktext != '' ) { 
 			?>
