@@ -28,10 +28,10 @@ function gs_permitted_file($included_file) {
                 'widget.',
                 'cpt.',
                 'inc.',
+                'dashboard.',
                 'admin-branding',
                 'admin-menu',
                 'logo-settings',
-                'recent-drafts-widget',
                 'remove-dashboard-widgets',
                 'remove-default-widgets',
                 'sidebars-config',
@@ -257,6 +257,27 @@ function gs_content_limit($max_char, $more_link_text = '(more...)', $stripteaser
       echo $content;
       echo "</p>";
    }
+}
+
+
+/* --------------------------------------------------------------------
+
+:: Get the Post Thumbnail URL
+
+Function for easily returning the URL of a post thumbnail or 
+"featured image".  
+
+Parameter $thumbnail_size allows you to specify which image size
+you want to use. Default: 'post-thumbnail'.
+
+-------------------------------------------------------------------- */
+function gs_post_thumbnail_url( $thumbnail_size = 'post-thumbnail' ) {
+ 
+  $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $thumbnail_size );
+  $url = $thumb['0'];
+
+  return $url;
+
 }
 
 
