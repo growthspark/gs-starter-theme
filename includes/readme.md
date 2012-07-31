@@ -10,6 +10,8 @@ In order for new files to be included, their names must be prefixed with one of 
 
 * widget.  (for Custom Widgets)
 
+* dashboard. (for Dashboard Widgets)
+
 * inc.     (generic includes prefix for all other files)
 
 Filenames containing the word "sample" will never be included (ie widget.sample.php, cpt.sample.php)
