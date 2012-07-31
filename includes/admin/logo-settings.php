@@ -167,7 +167,7 @@ function growthspark_logo_options_render_page() {
 	?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php printf( __( 'Logo Options', 'growthspark' ), get_current_theme() ); ?></h2>
+		<h2>Logo Options</h2>
 		<?php settings_errors(); ?>
 
 		<form method="post" action="options.php">
