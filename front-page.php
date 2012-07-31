@@ -12,7 +12,7 @@ Template Name: Home Page
 
 	   		<?php if ($slides->have_posts() ): while ($slides->have_posts() ) : $slides->the_post(); ?>
 
-	   			<?php get_template_part('templates/slider'); ?>
+	   			<?php get_template_part('parts/slider'); ?>
 
 			<?php endwhile; endif; wp_reset_query(); ?>
 

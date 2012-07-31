@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php get_template_part('templates/subpage-top'); ?>
+<?php get_template_part('parts/subpage-top'); ?>
 
 <article>
 	<h1>404 Not Found</h1>
@@ -7,5 +7,5 @@
 	<?php get_search_form(); ?>
 </article>
 
-<?php get_template_part('templates/subpage-bottom'); ?>
+<?php get_template_part('parts/subpage-bottom'); ?>
 <?php get_footer(); ?>
