@@ -5,7 +5,8 @@
 
 ***************************************************************/
 
-class Foo_Widget extends WP_Widget {
+// Class name must match value passed to register_widget at end of this file
+class Foo_Widget extends WP_Widget {  
 
 	/**
 	 * Register widget with WordPress.
@@ -80,4 +81,4 @@ class Foo_Widget extends WP_Widget {
 } // Widget class 
 
 // register the widget
-add_action( 'widgets_init', create_function( '', 'register_widget( Foo_Widget );' ) );
+add_action( 'widgets_init', create_function( '', "register_widget( 'Foo_Widget' );" ) );

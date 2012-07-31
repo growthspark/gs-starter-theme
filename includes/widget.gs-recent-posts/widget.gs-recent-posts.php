@@ -48,25 +48,25 @@ function gsrp_excerpt_length($max_char, $more_link_text = '(more...)', $striptea
     $content = str_replace(']]>', ']]&gt;', $content);
     $content = strip_tags($content);
 
-   if (strlen($_GET['p']) > 0) {
-      echo "<p>";
-      echo $content;
-      echo "</p>";
-   }
-   else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
-        $content = substr($content, 0, $espacio);
-        $content = $content;
-        echo "<p>";
-        echo $content;
-        echo "...";
-        echo "</p>";
-   }
-   else {
-      echo "<p>";
-      echo $content;
-      echo "</p>";
-   }
-}
+    if ( isset($_GET['p']) && ( strlen($_GET['p']) > 0 ) ) {
+	  echo "<p>";
+	  echo $content;
+	  echo "</p>";
+	}
+	else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
+	    $content = substr($content, 0, $espacio);
+	    $content = $content;
+	    echo "<p>";
+	    echo $content;
+	    echo "...";
+	    echo "</p>";
+	}
+	else {
+	  echo "<p>";
+	  echo $content;
+	  echo "</p>";
+	}
+	}
 
 /* ----------------------------------------------------------
 Create the Widget
@@ -187,9 +187,10 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 	public function form( $instance ) {
 		//Defaults
 		$instance = wp_parse_args( (array) $instance, array( ) );
-		$title = esc_attr( $instance['title'] );
-		$excerpt_length = esc_attr( $instance['excerpt_length'] );
-
+		if ( isset($instance['title']) )
+			$title = esc_attr( $instance['title'] );
+		if ( isset($instance['excerpt_length']) )
+			$excerpt_length = esc_attr( $instance['excerpt_length'] );
 
 		?>
 		<p>
@@ -304,6 +305,6 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 }
 
 // register the widget
-add_action( 'widgets_init', create_function( '', "register_widget( Widget_GS_Recent_Posts );" ) );
+add_action( 'widgets_init', create_function( '', "register_widget( 'Widget_GS_Recent_Posts' );" ) );
 
 ?>
