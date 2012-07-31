@@ -1,8 +1,8 @@
-# Growth Spark Starter Theme v1.1 - Features Overview
+# Growth Spark Starter Theme v1.2 - Features Overview
 
 ## Auto-Includer
 
-Version 1.1 introduces an Auto-Include feature which will automatically include() PHP files placed in the /includes/ folder or in the root of any direct sub-directories of that folder(ie /includes/folder-name).
+The Auto-Include feature will automatically include() PHP files placed in the /includes/ folder or in the root of any direct sub-directories of that folder(ie /includes/folder-name).
 
 This helps reduce clutter in the functions.php file and eliminates the need to manually include each new file in functions.php.
 
@@ -12,7 +12,15 @@ This feature can be found within gs_theme_setup() in functions.php.
 
 ## Custom Admin Features
 
-The /includes/ directory now comes stocked with a variety of functions which customize the WordPress admin interface for better usability:
+The /includes/admin/ directory now comes stocked with a variety of functions which customize the WordPress admin interface for better usability:
+
+### Enhanced "Recent Drafts" Dashboard Widget
+
+dashboard.recent-drafts.php
+
+Displays an updated version of the "Recent Drafts" dashboard widget that can provide a list drafts for both Pages & Posts, as well as any number of custom post types.  Drafts are organized into separate lists according to type.
+
+Desired post types can be set in the $types array of this file.
 
 ### Theme Styles applied to TinyMCE Editor 
 
