@@ -20,9 +20,6 @@
 
 	<aside id="sidebar" class="four columns">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Page Sidebar') ): ?>
-
-		<?php// gs_create_widget('WP_Widget_Search'); ?>
-
 		<?php endif; ?>	
 	</aside>
 
