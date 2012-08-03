@@ -8,7 +8,7 @@
 
 	</aside>
 	
-<?php elseif ( is_singular('post') ):?>
+<?php elseif ( is_home() || is_archive() || is_singular('post') ):?>
 
 	<aside id="sidebar" class="four columns">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Blog Sidebar') ): ?>
