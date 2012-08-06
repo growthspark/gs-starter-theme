@@ -44,6 +44,10 @@ Dashboard
 #gs_dashboard_recent_drafts:after { clear: both; }
 #gs_dashboard_recent_drafts { *zoom: 1; }
 
+#dashboard-widgets h4 small {
+	font-family: sans-serif;
+}
+
 
 /* --------------------------------------------------------------------
 Hide "Customize" Link in Themes Panel

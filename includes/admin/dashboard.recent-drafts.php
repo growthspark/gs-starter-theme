@@ -69,9 +69,11 @@ class GS_Recent_Drafts_Widget {
 			foreach ( $drafts as $draft ) {
 				$url = get_edit_post_link( $draft->ID );
 				$title = _draft_or_post_title( $draft->ID );
-				$item = "<h4><a href='$url' title='" . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . "'>" . esc_html($title) . "</a></h4> <abbr title='" . get_the_time(__('Y/m/d g:i:s A'), $draft) . "'><small>" . get_the_time( get_option( 'date_format' ), $draft ) . '</small></abbr>';
-				if ( $the_content = preg_split( '#\s#', strip_tags( $draft->post_content ), 11, PREG_SPLIT_NO_EMPTY ) )
-					$item .= '<p>' . join( ' ', array_slice( $the_content, 0, 10 ) ) . ( 10 < count( $the_content ) ? '&hellip;' : '' ) . '</p>';
+				$item = "<h4><a href='$url' title='" . sprintf( __( 'Edit &#8220;%s&#8221;' ), esc_attr( $title ) ) . "'>" . esc_html($title) . "</a> - <abbr title='" . get_the_time(__('Y/m/d g:i:s A'), $draft) . "'><small>" . get_the_time( get_option( 'date_format' ), $draft ) . '</small></abbr></h4>  ';
+				/*if ( $the_content = preg_split( '#\s#', strip_tags( $draft->post_content ), 11, PREG_SPLIT_NO_EMPTY ) )
+					$item .= '<p class="dashboard-rp-excerpt">' . join( ' ', array_slice( $the_content, 0, 10 ) ) . ( 10 < count( $the_content ) ? '&hellip;' : '' ) . ' ';
+					$item .= ' <span class="dashboard-edit-draft"><a href="$url">(Edit)</a></span></p> ';
+				*/
 				$list[] = $item;
 			}
 	?>
