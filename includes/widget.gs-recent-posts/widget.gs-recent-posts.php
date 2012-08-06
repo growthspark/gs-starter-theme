@@ -258,7 +258,7 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 				<?php
 				$dates = array(
 					'F j, Y' => 'June 1, 2012',
-					'f j Y' => 'Jun 1 2012', 
+					'M j, Y' => 'Jun 1, 2012', 
 					'F j' => 'June 1', 
 					'm/d/Y' => '6/1/2012', 
 					'm/d/y' => '6/1/12'
