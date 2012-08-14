@@ -151,8 +151,3 @@ if ( !function_exists('gs_sample_cpt') ) {
 		
 	} 
 }
-
-
-	
-
-?>

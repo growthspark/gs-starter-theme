@@ -33,6 +33,3 @@ function gs_custom_user_capabilities() {
 
 	}
 }
-
-
-?>

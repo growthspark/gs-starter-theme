@@ -76,5 +76,3 @@ function gs_custom_menu_order($menu_ord) {
 }
 add_filter('custom_menu_order', 'gs_custom_menu_order');
 add_filter('menu_order', 'gs_custom_menu_order');
-
-?>

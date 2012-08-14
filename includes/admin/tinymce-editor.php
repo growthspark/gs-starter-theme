@@ -161,4 +161,3 @@ if( !function_exists('gs_custom_mce_format') ){
 	}
 	add_filter('tiny_mce_before_init', 'gs_custom_mce_format' );
 }
- ?>

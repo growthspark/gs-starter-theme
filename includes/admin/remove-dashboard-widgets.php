@@ -21,6 +21,3 @@ function gs_remove_dashboard_widgets() {
 
 }
 add_action('wp_dashboard_setup', 'gs_remove_dashboard_widgets' );
-
-
-?>

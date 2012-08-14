@@ -85,8 +85,3 @@ function gs_add_logo_to_dashboard() {
     <!--/ Custom Dashboard Logo -->
     <?php
 }
-
-
-
-
-?>

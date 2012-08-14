@@ -279,6 +279,3 @@ function gs_post_thumbnail_url( $thumbnail_size = 'post-thumbnail' ) {
   return $url;
 
 }
-
-
-?>

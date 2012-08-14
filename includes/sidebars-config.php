@@ -48,6 +48,3 @@ GS_Widget_Templates.   (default: 'sidebar')
 gs_register_sidebar('Homepage Widgets', 'home');
 gs_register_sidebar('Page Sidebar');
 gs_register_sidebar('Blog Sidebar');
-
-
-?>

@@ -115,6 +115,3 @@ function gs_slides_cpt() {
     		'query_var' => true,
     	)
     ); */
-	
-
-?>

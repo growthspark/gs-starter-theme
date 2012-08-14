@@ -306,5 +306,3 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 
 // register the widget
 add_action( 'widgets_init', create_function( '', "register_widget( 'Widget_GS_Recent_Posts' );" ) );
-
-?>
