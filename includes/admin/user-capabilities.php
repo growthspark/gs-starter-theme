@@ -8,7 +8,7 @@
 **                                
 **********************************************************************/
 
-add_action( 'init', 'gs_custom_user_capabilities' );
+add_action( 'after_switch_theme', 'gs_custom_user_capabilities' );
 function gs_custom_user_capabilities() {
 	global $wp_roles;
 
