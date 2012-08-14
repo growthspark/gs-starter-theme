@@ -70,6 +70,7 @@ In order for this to work you'll need to first set the license keys by
 defining constants in your wp-config.php file.
 -------------------------------------------------------------------- */
 function gs_set_keys() {
+<<<<<<< HEAD
 	if ( !get_option('wordpress_api_key') && defined('ACF_OPTIONS_KEY') ) {
 		update_option('wordpress_api_key', AKISMET_LICENSE_KEY)
 	}
@@ -77,6 +78,13 @@ function gs_set_keys() {
 	if ( !get_option('acf_options_page_ac') && defined('ACF_OPTIONS_KEY') ) {
 		update_option('acf_options_page_ac', ACF_OPTIONS_KEY)
 	}
+=======
+
+	if ( !get_option('acf_options_page_ac') && defined('ACF_OPTIONS_KEY') ) {
+		update_option('acf_options_page_ac', ACF_OPTIONS_KEY);
+	}
+
+>>>>>>> parent of 76b0eef... Repo moved
 }
 add_action('after_switch_theme', 'gs_set_keys');
 

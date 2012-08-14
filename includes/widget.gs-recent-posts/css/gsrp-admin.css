@@ -1,0 +1,15 @@
+/* Styles For Widget Admin */
+
+#gsrp-excerpt-length {
+	width: 40px;
+	margin-left: 2px;
+}
+
+#gsrp-date-format,
+#gsrp-thumbnail-field {
+	width: 125px;
+}
+
+#gsrp-num-posts {
+	width: 60px;
+}
