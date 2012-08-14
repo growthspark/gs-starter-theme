@@ -6,11 +6,21 @@
 
 				<h4>Showing results for: "<?php the_search_query(); ?>"</h4>
 
-				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				<?php if ( have_posts() ) : 
 
-					<?php get_template_part('parts/post'); ?>
+					while ( have_posts() ) : the_post(); 
 
-				<?php endwhile; endif; ?>
+						get_template_part('parts/post'); 
+					
+					endwhile; 
+
+				else:
+
+					?>
+					<p>Sorry, there are no results that match your search.</p>
+					<?php
+
+				endif; ?>
 
 <?php get_template_part('parts/subpage-bottom'); ?>
 
