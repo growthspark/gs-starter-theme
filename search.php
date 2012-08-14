@@ -6,7 +6,6 @@
 
 				<h4>Showing results for: "<?php the_search_query(); ?>"</h4>
 
-<<<<<<< HEAD
 				<?php if ( have_posts() ) : 
 
 					while ( have_posts() ) : the_post(); 
@@ -22,13 +21,7 @@
 					<?php
 
 				endif; ?>
-=======
-				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part('parts/post'); ?>
-
-				<?php endwhile; endif; ?>
->>>>>>> parent of 76b0eef... Repo moved
 
 <?php get_template_part('parts/subpage-bottom'); ?>
 
