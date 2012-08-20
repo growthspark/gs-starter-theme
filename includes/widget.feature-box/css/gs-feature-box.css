@@ -1,0 +1,11 @@
+.fbox-upload-widget-image-preview {
+	max-width: 100%;
+	margin-top: 10px;
+	display: block;
+}
+
+.media-library-upload,
+.media-library-remove {
+	margin-top: 5px;
+}
+

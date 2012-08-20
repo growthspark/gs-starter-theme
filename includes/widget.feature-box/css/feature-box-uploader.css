@@ -1,0 +1,11 @@
+/* Remove unnecessary fields from the upload window */
+.feature-box-upload-window .slidetoggle .post_title,
+.feature-box-upload-window .slidetoggle .image_alt,
+.feature-box-upload-window .slidetoggle .post_excerpt,
+.feature-box-upload-window .slidetoggle .post_content,
+.feature-box-upload-window .slidetoggle .url,
+.feature-box-upload-window .slidetoggle .align,
+.feature-box-upload-window .slidetoggle .image-size,
+.feature-box-upload-window .slidetoggle .del-link {
+	display: none !important;
+}
