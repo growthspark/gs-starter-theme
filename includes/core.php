@@ -272,6 +272,7 @@ you want to use. Default: 'post-thumbnail'.
 
 -------------------------------------------------------------------- */
 function gs_post_thumbnail_url( $thumbnail_size = 'post-thumbnail' ) {
+  global $post;
  
   $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $thumbnail_size );
   $url = $thumb['0'];
