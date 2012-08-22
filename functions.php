@@ -197,4 +197,43 @@ function gs_jquery_cycle_settings() {
 add_action('wp_footer', 'gs_jquery_cycle_settings');
 
 
+/* --------------------------------------------------------------------
+
+:: Pagination
+
+Used in templates to display pagination.  Display can be customized
+within the $args array.  See 
+http://codex.wordpress.org/Function_Reference/paginate_links
+for a full list of available arguments.
+
+-------------------------------------------------------------------- */
+function gs_pagination() {
+  global $wp_query;
+
+  $current_page = max(1, get_query_var('paged'));
+  $total_pages = $wp_query->max_num_pages;
+
+  if ( is_search() ) {  // Special treatment needed for search pages
+  	$big = '999999999';
+  	$base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
+  } else {
+  	$base = get_pagenum_link(1) . '%_%';
+  }
+
+  $args = array(
+	'base' => $base,
+    'format' => 'page/%#%',
+    'current' => $current_page,
+    'total' => $total_pages,
+	);
+
+  if ($total_pages > 1){
+    echo '<div class="pagination">';
+    echo paginate_links($args);
+    echo '</div>';
+  }
+
+}
+
+
 ?>
