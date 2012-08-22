@@ -84,23 +84,22 @@ class GS_Feature_Box extends WP_Widget {
 		$linktext = $instance['linktext'];
 		$url = $instance['url'];
 		$url = $this->url_test($url);
-
-		if ( isset($instance['image']) ) {
+		if ( isset($instance['image'] ) && ($instance['image'] != '') ) {
 			$image = $instance['image'];
-		} else {
-			$image = null;
-		}
-
-
+		} 
+		// Un-comment to  display a default image when no image is set
+		/*else {
+			$image = get_template_directory_uri() . '/img/feature-box-default.jpg';
+		}*/  
 
 		echo $before_widget; ?>
 		<div class="feature-box">
-		<?php if ($image != ''):  ?>
 
-				<img class="feature-box-image" src="<?php echo $image; ?>">
-
+		<?php 
+		if (isset($image)) : ?>
+			<img class="feature-box-image" src="<?php echo $image; ?>">
 		<?php endif; ?>
-		
+
 		<?php
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; } ?>
 
