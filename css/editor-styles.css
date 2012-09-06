@@ -1,0 +1,37 @@
+/*		
+TinyMCE Editor Stylesheet                                         
+This stylesheet is loaded for the TinyMCE editor.
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald);
+
+body {
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	line-height: 1.4;
+}
+
+
+h1, h2, h3, h4 {
+	margin: .6em 0;
+	font-family: 'Oswald', sans-serif;
+	font-weight: normal;
+}
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.2em; }
+
+p, ul { 
+	line-height: 1.4;
+}
+
+a, a:visited {
+	color: #39C;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #6C0;
+}
