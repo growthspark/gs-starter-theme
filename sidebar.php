@@ -1,7 +1,13 @@
-<!--BEGIN SIDEBARS -->
+<?php
+/**
+ * Sidebars template file
+ *
+ * Sets templates for sidebars & widget areas.
+ */
+?>
 
-
-<?php if( is_front_page() ):?>
+<!--BEGIN SIDEBAR -->
+<?php if( is_front_page()  || is_singular('slide') ):?>
 
 	<aside id="home-widgets" class="row">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Homepage Widgets') ); ?>
@@ -24,5 +30,4 @@
 	</aside>
 
 <?php endif;?>
-
 <!--END SIDEBAR-->

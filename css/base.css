@@ -1,17 +1,15 @@
-/************************************************************
-**															
-** BASE STYLESHEET                                           
-**   
-** Sets defaults & normalization.  
-** Add your custom styles in style.css            
-**                                      
-*************************************************************/
+/*
+
+Base Stylesheet                                      
+  
+Sets defaults & normalization.  
+Add your custom styles in style.css            
+                               
+*/
 
 /* ----------------------------------------------------------
-:: HTML5 Boilerplate Normalization 
-http://html5boilerplate.com/
+HTML5 Boilerplate Normalization  - http://html5boilerplate.com
 ------------------------------------------------------------- */
-
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
@@ -99,7 +97,7 @@ td { vertical-align: top; }
 }
 
 /* ----------------------------------------------------------
-:: WordPress Classes
+WordPress Classes
 ------------------------------------------------------------- */
 
 .alignleft {
@@ -126,9 +124,7 @@ td { vertical-align: top; }
 
 
 /* ----------------------------------------------------------
-:: Fluid 12-Column Grid System
-
-Based on work by ZURB - http://foundation.zurb.com
+Fluid 12-Column Grid System - http://foundation.zurb.com
 ------------------------------------------------------------- */
 .container { padding: 0 20px; }
 
@@ -210,7 +206,7 @@ img { -ms-interpolation-mode: bicubic; }
 
 
 /* ----------------------------------------------------------
-:: Mobile Grid
+Mobile Grid
 -------------------------------------------------------------*/
 /*
   @media only screen and (max-width: 767px) {   

@@ -1,24 +1,17 @@
 <?php
-/**********************************************************************
+/**
+ * Admin Branding
+ *
+ * This file contains functions for branding various areas of
+ * the WordPress admin panels with custom logos.
+ */
 
-:: Admin Branding
-
-Contents
-I. Custom Login Logo
-II. Custom Login Logo URL
-III. Add Logo to Dashboard
-
-**********************************************************************/
-
-/* --------------------------------------------------------------------
-
-I. Custom Login Logo
-
-Replaces the WordPress logo on the login screen with a logo of 
-your choosing.
-
--------------------------------------------------------------------- */
-add_action('login_head', 'gs_custom_login_logo');
+/**
+ * Adds a custom logo to the login screen
+ *
+ * @uses growthspark_get_default_logo_options()
+ * @uses get_option()
+ */
 function gs_custom_login_logo() {
     $defaults = growthspark_get_default_logo_options();
     $option = get_option('growthspark_logo_options', $defaults);
@@ -38,30 +31,27 @@ function gs_custom_login_logo() {
     <!--/ Custom Login Logo -->
     <?php
 }
+add_action('login_head', 'gs_custom_login_logo');
 
 
-/* --------------------------------------------------------------------
-
-II. Custom Login Logo URL
-
-Changes the link on the login logo to the site's own URL, instead of WordPress.org
-http://primegap.net/2011/01/26/wordpress-quick-tip-custom-wp-login-php-logo-url-without-hacks/
-
--------------------------------------------------------------------- */
-add_filter( 'login_headerurl', 'gs_custom_login_url', 10, 4 );
+/**
+ * Change login logo URL
+ *
+ * Changes the link on the login logo to the site's own URL, instead 
+ * of WordPress.org.
+ */
 function gs_custom_login_url() {
   return site_url();
 }
+add_filter( 'login_headerurl', 'gs_custom_login_url', 10, 4 );
 
-/* --------------------------------------------------------------------
 
-III. Add Logo to the Dashboard
-
-Adds a logo to the top of the Dashboard page, replacing the standard
-"Dashboard" title and icon.
-
--------------------------------------------------------------------- */
-add_action('admin_head', 'gs_add_logo_to_dashboard');
+/**
+ * Adds a custom logo to the Dashboard
+ *
+ * @uses growthspark_get_default_logo_options()
+ * @uses get_option()
+ */
 function gs_add_logo_to_dashboard() {
     $defaults = growthspark_get_default_logo_options();
     $option = get_option('growthspark_logo_options', $defaults);
@@ -85,3 +75,4 @@ function gs_add_logo_to_dashboard() {
     <!--/ Custom Dashboard Logo -->
     <?php
 }
+add_action('admin_head', 'gs_add_logo_to_dashboard');

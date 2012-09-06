@@ -1,26 +1,27 @@
 <?php
-/**************************************************************
+/**
+ * Custom widget for displaying Recent Posts with enhanced options
+ *
+ * Supports custom post types, thumbnails, and excerpts.
+ * 
+ * @author Sean Butze
+ */
 
-GS Recent Posts
-
-An Enhanced Recent Posts Widget
-
-v1.0
-
-Created by Sean Butze for Growth Spark
-
-***************************************************************/
-
-/* ----------------------------------------------------------
-Register the plugin stylesheets
-------------------------------------------------------------- */
+/**
+ * Loads the admin stylesheet
+ * 
+ * @uses wp_enqueue_style()
+ */
 function queue_gsrp_admin_scripts() {
-    wp_register_style( 'gsrp-admin-styles', get_template_directory_uri() .'/includes/widget.gs-recent-posts/css/gsrp-admin.css', array(), '1', 'all' );
-    wp_enqueue_style( 'gsrp-admin-styles' );
-
+    wp_enqueue_style( 'gsrp-admin-styles', get_template_directory_uri() .'/includes/widget.gs-recent-posts/css/gsrp-admin.css', array(), '1', 'all' );
 }
-	add_action('admin_enqueue_scripts', 'queue_gsrp_admin_scripts', 1);
+add_action('admin_enqueue_scripts', 'queue_gsrp_admin_scripts', 1);
 
+/**
+ * Loads the front-end stylesheet
+ * 
+ * @uses wp_enqueue_style()
+ */
 function queue_gsrp_scripts() {
 	if ( !is_admin() ) {
 	    wp_register_style( 'gsrp-styles', get_template_directory_uri() .'/includes/widget.gs-recent-posts/css/gs-recent-posts.css', array(), '1', 'all' );
@@ -28,20 +29,22 @@ function queue_gsrp_scripts() {
 	}
 
 }
-	add_action('wp_enqueue_scripts', 'queue_gsrp_scripts', 1);
+add_action('wp_enqueue_scripts', 'queue_gsrp_scripts', 1);
 
-/* ----------------------------------------------------------
-Set Thumbnail Size
-------------------------------------------------------------- */
+/**
+ * Adds a custom thumbnail size
+ */
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
 	add_image_size('gsrp_thumb', 75, 75, true);
 }	
 
-
-/* ----------------------------------------------------------
-Excerpt Length Function
-------------------------------------------------------------- */
+/**
+ * Displays an excerpt limited to a certain number of characters.
+ *
+ * @param int $max_char The maximum number of characters to display
+ * @uses get_the_content()
+ */
 function gsrp_excerpt_length($max_char, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
     $content = get_the_content($more_link_text, $stripteaser, $more_file);
     $content = apply_filters('the_content', $content);
@@ -68,9 +71,9 @@ function gsrp_excerpt_length($max_char, $more_link_text = '(more...)', $striptea
 	}
 	}
 
-/* ----------------------------------------------------------
-Create the Widget
-------------------------------------------------------------- */
+/**
+ * Creates the widget
+ */
 class Widget_GS_Recent_Posts extends WP_Widget {
 
 	/**

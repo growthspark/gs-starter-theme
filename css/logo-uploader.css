@@ -1,6 +1,9 @@
-/* --------------------------------------------------------------------
-Hide Un-needed fields in Logo Uploader
--------------------------------------------------------------------- */
+/*
+
+Logo Uploader Stylsheet
+
+*/
+
 .logo-upload-window .slidetoggle .post_title,
 .logo-upload-window .slidetoggle .image_alt,
 .logo-upload-window .slidetoggle .post_excerpt,

@@ -37,7 +37,7 @@ h3 { font-size: 1.5em; }
 h4 { font-size: 1.2em; }
 
 p, ul { 
-	line-height: 1.8;
+	line-height: 1.4;
 }
 
 a, a:visited {
@@ -187,7 +187,7 @@ Sidebar
 ------------------------------------------------------------- */
 .widget-container {
 	font-size: .85em;
-	line-height: 1.8;
+	line-height: 1.4;
 }
 
 .widget-container h4 {

@@ -6,7 +6,7 @@
 	<h2 class="page-title blog-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 <?php endif; ?>
 
-<p class="article-info">Posted by <span><?php the_author();?></span> on <?php echo get_the_date() . gs_show_categories(); gs_comment_count(); ?></p>
+<p class="article-info">Posted by <span><?php the_author();?></span> on <?php echo get_the_date(); gs_show_categories(' in ',', ',' '); gs_comment_count(); ?></p>
 
 
 <?php

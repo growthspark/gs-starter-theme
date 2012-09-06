@@ -1,9 +1,9 @@
 <?php
-/* ----------------------------------------------------------
-
-Remove Default Widgets
-
-------------------------------------------------------------- */
+/**
+ * Removes default sidebar widgets from the Available Widgets panel
+ *
+ * @uses unregister_widget()
+ */
 function unregister_default_wp_widgets() {
   unregister_widget('WP_Widget_Calendar');
   //unregister_widget('WP_Widget_Search');

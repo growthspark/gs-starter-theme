@@ -1,145 +1,212 @@
 <?php
-/**********************************************************************
+/**
+ * Theme functions and definitions
+ *
+ */
 
-:: Main Functions File
 
-**********************************************************************/
-
-/* --------------------------------------------------------------------
-
-:: Set Up Default Theme Features
--------------------------------------------------------------------- */
-add_action( 'after_setup_theme', 'gs_theme_setup' );
+/**
+ * Sets up theme defaults and registers the various WordPress features
+ * supported by the theme.
+ *
+ * @uses gs_permitted_file() To verify files before auto-inclusion
+ * @uses add_theme_support() To add support for post thumbnails.
+ * @uses register_nav_menu() To add support for navigation menus.
+ * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
+ * @uses add_image_size() To set sizes for featured images.
+ */
 function gs_theme_setup() {
 
-	/* --------------------------------------------------------------------
-	Load Core Theme File
-	-------------------------------------------------------------------- */
-	include_once(TEMPLATEPATH . '/includes/core.php');
+	/**
+	 * Loads the theme functions library.
+	 */
+	include_once(TEMPLATEPATH . '/includes/library.php');
 
-	/* --------------------------------------------------------------------
+ 	/**
+     * Auto-Includer 
+     *
+     * Automatically includes PHP files in the /includes/ directory. 
+     *
+     * WARNING: Not recommended for use in production environments. 
+     * Before deploying to production, uncomment the echo statements 
+     * below to generate regular require statements & copy them into this file.
+     */
+	foreach (glob(__DIR__.'/includes/*.php') as $file) {
+		if ( gs_permitted_file($file) ) {
+			include_once $file;
+			$include = explode(get_template().'/', $file);
+			//echo "require_once('".$include[1]."'); <br />"; 
+		}
+	}
 	
-	Auto-Includer
-
-	This automatically includes permitted files in the /includes/ directory
-	so you don't have to include them here manually.  See includes/readme.txt
-	for documentation.
-
-	-------------------------------------------------------------------- */
-	// Include Permitted PHP files located in /includes/
-	foreach (glob(__DIR__ . '/includes/*.php') as $file) {
-	  if ( gs_permitted_file($file) ) 
-	    include_once $file;
-	}
-	// Include Permitted PHP files located in direct sub-directories of /includes/
-	foreach (glob(__DIR__ . '/includes/*/*.php') as $file) {
-		if ( gs_permitted_file($file) ) 
-		   include_once $file;
+	foreach (glob(__DIR__.'/includes/*/*.php') as $file) {
+		if ( gs_permitted_file($file) ) {
+			include_once $file;
+			$include = explode(get_template().'/', $file);
+			//echo "require_once('".$include[1]."'); <br />"; 
+		}
 	}
 
-	/* --------------------------------------------------------------------
-	Remove WP Version Number (for security)
-	-------------------------------------------------------------------- */
+ 	/**
+     * Removes WordPress version number from the document head (for security).
+	 *
+     */	
 	remove_action('wp_head', 'wp_generator');
 
-	/* --------------------------------------------------------------------
-	Add Menus
-	-------------------------------------------------------------------- */
-	add_theme_support( 'menus' );   
+ 	/**
+     * Registers theme menus.
+     */	
 	register_nav_menu('main', 'Main Navigation Menu');
-	// register_nav_menu('Your Menu Name', 'Your Menu Description');
+	//register_nav_menu('Your Menu Name', 'Your Menu Description');
 
-	/* --------------------------------------------------------------------
-	Add Template Featured Image Support and custom image sizes
-	-------------------------------------------------------------------- */
+ 	/**
+     * Registers thumbnail and featured image sizes.
+     */	
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 150, 150, true ); // Normal post thumbnails
 	add_image_size( 'slide', 960, 300, true );
-	// add_image_size( 'custom-thumb-name', 150, 150, true ); 
+	//add_image_size( 'custom-thumb-name', 150, 150, true ); 
 
-} // gs_theme_setup
+}
+add_action( 'after_setup_theme', 'gs_theme_setup' );
 
 
-/* --------------------------------------------------------------------
-:: Set License Keys Upon Theme Activation
+/**
+ * Registers the theme's widget areas.
+ *
+ * @uses register_sidebar()
+ */
+function gs_widgets_init() {
+	register_sidebar(
+	    array(
+	        'name'          => 'Homepage Widgets',
+	        'id'            => 'homepage-widgets',
+	        'description'   => '',
+	        'before_widget' => '<div id="%1$s" class="home-widget %2$s four columns"><div class="widget-container">',
+	        'after_widget'  => '</div></div>',
+	        'before_title'  => '<h4>',
+	        'after_title'   => '</h4>',           
+	    ));
 
-Runs only when the theme is first activated.  Useful for automatically
-populating license keys for various plugins & extensions.
+	register_sidebar(
+	    array(
+	        'name'          => 'Page Sidebar',
+	        'id'            => 'page-sidebar',
+	        'description'   => '',
+	        'before_widget' => '<div id="%1$s" class="%2$s side-widget">',
+	        'after_widget'  => '</div>',
+	        'before_title'  => '<h4>',
+	        'after_title'   => '</h4>',           
+	    ));
 
-In order for this to work you'll need to first set the license keys by 
-defining constants in your wp-config.php file.
--------------------------------------------------------------------- */
+	register_sidebar(
+	    array(
+	        'name'          => 'Blog Sidebar',
+	         'id'            => 'blog-sidebar',
+	        'description'   => '',
+	        'before_widget' => '<div id="%1$s" class="%2$s side-widget">',
+	        'after_widget'  => '</div>',
+	        'before_title'  => '<h4>',
+	        'after_title'   => '</h4>',           
+	    ));
+}
+add_action('widgets_init', 'gs_widgets_init');
+
+
+/**
+ * Sets license keys upon theme activation
+ * 
+ * Runs only when the theme is first activated.  Useful for automatically
+ * populating license keys for various plugins & extensions.
+ * 
+ * In order for this to work you'll need to first set the license keys by
+ * defining constants in your wp-config.php file.
+ *
+ * @link http://seanbutze.com/automatically-load-wordpress-license-keys-with-wp-config-php/ 
+ *
+ */
 function gs_set_keys() {
-
-	if ( !get_option('acf_options_page_ac') && defined('ACF_OPTIONS_KEY') ) {
+	if ( !get_option('acf_options_page_ac') && defined('ACF_OPTIONS_KEY') )
 		update_option('acf_options_page_ac', ACF_OPTIONS_KEY);
-	}
 
+	if ( !get_option('acf_repeater_ac') && defined('ACF_REPEATER_KEY') )
+		update_option('acf_repeater_ac', ACF_REPEATER_KEY);
 }
 add_action('after_switch_theme', 'gs_set_keys');
 
 
-/* --------------------------------------------------------------------
-:: Configure Theme Styles
+/**
+ * Enqueues scripts and styles for front-end.
+ *
+ * @uses wp_enqueue_style()
+ * @uses wp_enqueue_script()
+ */
+function gs_scripts_styles() {
+	/*
+	 * Loads web fonts.
+	 */
+	$protocol = is_ssl() ? 'https' : 'http';
+	wp_enqueue_style( 'gs-web-fonts', "$protocol://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald", array(), null );
 
-http://codex.wordpress.org/Function_Reference/wp_enqueue_style
--------------------------------------------------------------------- */
-function gs_load_stylesheets() {
-	wp_enqueue_style( 'web-fonts', get_template_directory_uri() . '/css/web-fonts.css', array(), '1', 'all' );
-    wp_enqueue_style( 'gs-base', get_template_directory_uri() . '/css/base.css', array('web-fonts'), '1', 'all' );
-    wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('web-fonts', 'gs-base'), '1', 'all' );
+	/*
+	 * Loads theme stylesheets.
+	 */
+	wp_enqueue_style( 'gs-base-styles', get_template_directory_uri() . '/css/base.css', array(), '1', 'all' );
+  	wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('gs-base-styles'), '1', 'all' );
+
+	/*
+	 * Includes Mordernizr in the head.
+	 */
+	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.custom.js', array(), '1', false );
+
+	/*
+	 * Adds scripts.js in the footer.
+	 */
+  	wp_enqueue_script( 'gs-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'modernizr', 'jquery' ), '1', true );
+
+	/*
+	 * Adds JavaScript to pages with the comment form to support
+	 * sites with threaded comments (when in use).
+	 */
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
+
+	/*
+	 * Loads jQuery Cycle on the homepage only.
+	 */
+	if ( is_front_page() )
+    	wp_enqueue_script( 'jquery-cycle', get_template_directory_uri() . '/js/jquery.cycle.all.min.js', array( 'jquery' ), '1', false );
 }
-add_action('wp_enqueue_scripts', 'gs_load_stylesheets');
+add_action('wp_enqueue_scripts', 'gs_scripts_styles');
 
 
-/* --------------------------------------------------------------------
-:: Load Custom Stylesheets for the Admin interface
--------------------------------------------------------------------- */
-function gs_load_admin_stylesheet() {
+/**
+ * Enqueues scripts and styles for the admin panels.
+ * @uses wp_enqueue_style()
+ */
+function gs_admin_scripts_styles() {
+	/*
+	 * Loads admin.css
+	 */
 	wp_enqueue_style( 'gs-admin-styles', get_template_directory_uri() . '/css/admin.css', array(), '1', 'all' );
 }
-add_action('admin_enqueue_scripts','gs_load_admin_stylesheet');
+add_action('admin_enqueue_scripts','gs_admin_scripts_styles');
 
 
-/* --------------------------------------------------------------------
-:: Load JavaScript Files
-------------------------------------------------------------------- */
-function gs_enqueue_scripts() {
-  if (!is_admin()) {
-  // include modernizr in the head
-    wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.custom.js', array(), '1', false );
-    // include comment-reply.js only when comments are present & threaded comments are enabled
-    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-      wp_enqueue_script( 'comment-reply' );
-    }
-
-	// Add scripts.js file in the footer
-    wp_enqueue_script( 'gs-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'modernizr', 'jquery' ), '1', true );
-
-  }
-}
-add_action('template_redirect', 'gs_enqueue_scripts', 1);
-
-
-/* ----------------------------------------------------------
-
-:: Load Modernizr Tests
-
-We can use Modernizr.load to load certain resources
-only when they're needed.
-
--------------------------------------------------------------*/
+/**
+ * Add Modernizr tests in the footer.
+ */
 function gs_load_modernizr_tests() {
 ?>
 <!-- Modernizr Tests -->
 <script type="text/javascript">
 	Modernizr.load([{
-			/* Support CSS Selectors in IE 6-8 */
+		/* Support CSS Selectors in IE 6-8 */
 
-			// Test for border-radius support (effectively tests for IE 6-8)
-		    test : Modernizr.borderradius,
-		    // Load Selectivizr to enable CSS selectors in IE 6-8
-		    nope : ['<?php bloginfo('template_url');?>/js/selectivizr.min.js']
+		// Test for border-radius support (effectively tests for IE 6-8)
+	    test : Modernizr.borderradius,
+	    // Load Selectivizr to enable CSS selectors in IE 6-8
+	    nope : ['<?php bloginfo('template_url');?>/js/selectivizr.min.js']
 
 	}]);
 </script>
@@ -149,24 +216,9 @@ function gs_load_modernizr_tests() {
 add_action('wp_footer', 'gs_load_modernizr_tests');
 
 
-/* --------------------------------------------------------------------
-:: Load jQuery Cycle
--------------------------------------------------------------------- */
-function gs_load_jquery_cycle() {
-
-	if ( is_front_page() ) { // Load jQuery cycle only on the homepage
-
-    wp_register_script( 'jquery-cycle', get_template_directory_uri() . '/js/jquery.cycle.all.min.js', array( 'jquery' ), '1', false );
-    wp_enqueue_script( 'jquery-cycle' );
-
-	}
-}
-add_action('template_redirect', 'gs_load_jquery_cycle');
-
-
-/* --------------------------------------------------------------------
-:: Load jQuery Cycle Settings
--------------------------------------------------------------------- */
+/**
+ * Add jQuery Cycle settings in the footer.
+ */
 function gs_jquery_cycle_settings() {
 	
 	if ( is_front_page() ) {  ?>
@@ -191,25 +243,19 @@ function gs_jquery_cycle_settings() {
 	</script>
 	<!--/ jQuery Cycle Settings -->
 	<?php 
-
 	}
 }
 add_action('wp_footer', 'gs_jquery_cycle_settings');
 
 
-/* --------------------------------------------------------------------
-
-:: Pagination
-
-Used in templates to display pagination.  Display can be customized
-within the $args array.  See 
-http://codex.wordpress.org/Function_Reference/paginate_links
-for a full list of available arguments.
-
--------------------------------------------------------------------- */
+/**
+ * Displays pagination for archive & search pages.
+ *
+ * @global object $wp_query
+ * @uses paginate_links()
+ */
 function gs_pagination() {
   global $wp_query;
-
   $current_page = max(1, get_query_var('paged'));
   $total_pages = $wp_query->max_num_pages;
 
@@ -234,6 +280,5 @@ function gs_pagination() {
   }
 
 }
-
 
 ?>

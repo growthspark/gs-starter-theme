@@ -1,49 +1,36 @@
 <?php
-/*********************************************************************
-**                              
-** Admin Menu Customization
-**
-** Contents:
-** 		I. Remove Admin Menu Tabs
-**	   II. Re-order the Admin Menu                               
-**                                     
-***********************************************************************
+/**
+ * Admin Menu Customization 
+ */
 
-/* --------------------------------------------------------------------
-
-I. Remove Admin Menu Tabs
-
-Enables you to remove certain tabs from the admin menu. 
-
-NOTE: This function will NOT disable access to the features themselves.
-
-If you want to completely prevent users from accessing certain admin
-features, see: /includes/user-capabilities.php
-
--------------------------------------------------------------------- */
+/**
+ * Removes tabs from the Admin menu
+ *
+ * NOTE: This function will NOT disable access to the features themselves.
+ * 
+ * If you want to completely prevent users from accessing certain admin
+ * features, see: /includes/user-capabilities.php
+ *
+ * @uses remove_menu_page()
+ */
 function gs_remove_admin_menus(){
-
     if ( function_exists('remove_menu_page') ) { 
 
-    	// Remove the Tools tab for all users below Admin
+		/**
+		 * Removes the Tools tab for all users below Admin
+		 */
     	if ( !current_user_can('remove_users') ) {
         remove_menu_page('tools.php');  
     	}
 
     }
-
 }
 add_action('admin_menu', 'gs_remove_admin_menus'); 
 
 
-/* --------------------------------------------------------------------
-
-II. Re-order the Admin Menu
-
-Function for customizing the order of the admin menu tabs.
-
--------------------------------------------------------------------- */
-
+/**
+ * Customizes the order of the admin menu tabs
+ */
 function gs_custom_menu_order($menu_ord) {
 		if (!$menu_ord) return true;
 		return array(

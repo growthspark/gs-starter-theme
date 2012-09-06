@@ -1,12 +1,9 @@
 <?php
-/**********************************************************************
-
-:: Remove Dashboard Widgets
-
-Removes default widgets from the WP Dashboard.
-
-**********************************************************************/
-
+/**
+ * Removes default widgets from the Dashboard
+ *
+ * @global array $wp_meta_boxes
+ */
 function gs_remove_dashboard_widgets() {
 	global $wp_meta_boxes;
 

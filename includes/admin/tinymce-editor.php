@@ -1,25 +1,17 @@
 <?
-/**********************************************************************
-**                              
-** TinyMCE Editor Customization                                          
-**   
-** Contents
-** I. Add Theme Styles to Editor
-** II. Customize First Row Icons
-** III. Customize Second Row Icons
-** IV. Customize Format Types Menu
-**                                                
-**********************************************************************/
+/**
+ * TinyMCE Customization
+ */
 
 /* --------------------------------------------------------------------
 
 I. Apply Theme Stylesheet to the TinyMCE Editor
 
 -------------------------------------------------------------------- */
-// Function finds the specified stylesheet from the root of the current theme's folder.
-add_editor_style('css/web-fonts.css');
-add_editor_style('css/base.css');
-add_editor_style('style.css');
+function gs_add_editor_styles() {
+	add_editor_style('css/editor-styles.css');
+}
+add_action('admin_init', 'gs_add_editor_styles');
 
 
 /* --------------------------------------------------------------------

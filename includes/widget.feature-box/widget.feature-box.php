@@ -1,13 +1,13 @@
 <?php
-/* ----------------------------------------------------------
+/**
+ * Custom text widget with support for "Read More" links and featured images.
+ * 
+ * @author Sean Butze
+ */
 
-Feature Box Widget
-
-Adds a Feature Box widget, an enhanced text widget 
-with support for "Read More" links and featured images.
-
-------------------------------------------------------------- */
-
+/**
+ * Creates the widget
+ */
 class GS_Feature_Box extends WP_Widget {
 
 	/**

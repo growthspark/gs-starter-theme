@@ -8,6 +8,9 @@
  *
  */
 
+/** 
+ * Creates the dashboard widget
+ */
 class GS_Recent_Drafts_Widget {
 
 	/**
@@ -158,5 +161,6 @@ class GS_Recent_Drafts_Widget {
 	}
 
 
-} // class
+}
+
 $GS_Recent_Drafts_Widget = new GS_Recent_Drafts_Widget;

@@ -1,3 +1,8 @@
+/*
+
+Logo Uploader Scripts
+
+*/
 
 jQuery(document).ready(function($) {
 

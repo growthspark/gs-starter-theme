@@ -1,9 +1,9 @@
 <?php
-/**************************************************************
-
-:: Custom Widget Template
-
-***************************************************************/
+/**
+ * Template file for creating custom widgets
+ * To use, copy this template into a new file and save as 
+ * "widget.your-widget-name.php"
+ */
 
 // Class name must match value passed to register_widget at end of this file
 class Foo_Widget extends WP_Widget {  
