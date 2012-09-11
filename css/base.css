@@ -126,97 +126,185 @@ WordPress Classes
 /* ----------------------------------------------------------
 Fluid 12-Column Grid System - http://foundation.zurb.com
 ------------------------------------------------------------- */
-.container { padding: 0 20px; }
 
-.row { width: 100%; max-width: 980px; min-width: 727px; margin: 0 auto; }
-/* To fix the grid into a certain size, set max-width to width */
-.row .row { min-width: 0; }
+* { 
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box; 
+}
 
-.column, .columns { margin-left: 4.4%; float: left; min-height: 1px; position: relative; }
-.column:first-child, .columns:first-child { margin-left: 0; }
+/* The Grid ---------------------- */
+.row { width: 980px; max-width: 100%; min-width: 768px; margin: 0 auto; }
+.row .row { width: auto; max-width: none; min-width: 0; margin: 0 -15px; }
+.row.collapse .column, .row.collapse .columns { padding: 0; }
+.row .row { width: auto; max-width: none; min-width: 0; margin: 0 -15px; }
+.row .row.collapse { margin: 0; }
+
+.column, .columns { float: left; min-height: 1px; padding: 0 15px; position: relative; }
+.column.centered, .columns.centered { float: none; margin: 0 auto; }
+
 [class*="column"] + [class*="column"]:last-child { float: right; }
 
-.row .one     { width: 4.3%; }
-.row .two     { width: 13%; }
-.row .three   { width: 21.679%; }
-.row .four    { width: 30.37%; }
-.row .five    { width: 39.1%; }
-.row .six     { width: 47.8%; }
-.row .seven   { width: 56.5%; }
-.row .eight   { width: 65.2%; }
-.row .nine    { width: 73.9%; }
-.row .ten     { width: 82.6%; }
-.row .eleven  { width: 91.3%; }
-.row .twelve  { width: 100%; }
+[class*="column"] + [class*="column"].end { float: left; }
 
-.row .offset-by-one   { margin-left: 13.1%;  }
-.row .offset-by-two   { margin-left: 21.8%;  }
-.row .offset-by-three   { margin-left: 30.5%;  }
-.row .offset-by-four  { margin-left: 39.2%;  }
-.row .offset-by-five  { margin-left: 47.9%;  }
-.row .offset-by-six   { margin-left: 56.6%;  }
-.row .offset-by-seven   { margin-left: 65.3%;  }
-.row .offset-by-eight   { margin-left: 74.0%;  }
-.row .offset-by-nine  { margin-left: 82.7%;  }
-.row .offset-by-ten   { margin-left: 91.4%;  }
+.one, .row .one { width: 8.33333%; }
 
-.row .centered { float: none; margin: 0 auto; }
+.two, .row .two { width: 16.66667%; }
 
-.row .offset-by-one:first-child   { margin-left: 8.7%;  }
-.row .offset-by-two:first-child   { margin-left: 17.4%;  }
-.row .offset-by-three:first-child   { margin-left: 26.1%;  }
-.row .offset-by-four:first-child  { margin-left: 34.8%;  }
-.row .offset-by-five:first-child  { margin-left: 43.5%;  }
-.row .offset-by-six:first-child   { margin-left: 52.2%;  }
-.row .offset-by-seven:first-child   { margin-left: 60.9%;  }
-.row .offset-by-eight:first-child   { margin-left: 69.6%;  }
-.row .offset-by-nine:first-child  { margin-left: 78.3%;  }
-.row .offset-by-ten:first-child   { margin-left: 87%;  }
-.row .offset-by-eleven:first-child  { margin-left: 95.7%;  }
+.three, .row .three { width: 25%; }
 
-/* Source Ordering */
-.push-two     { left: 17.4% }
-.push-three   { left: 26.1%; }
-.push-four    { left: 34.8%; }
-.push-five    { left: 43.5%; }
-.push-six     { left: 52.2%; }
-.push-seven   { left: 60.9%; }
-.push-eight   { left: 69.6%; }
-.push-nine    { left: 78.3%; }
-.push-ten     { left: 87%; }
+.four, .row .four { width: 33.33333%; }
 
-.pull-two     { right: 17.4% }
-.pull-three   { right: 26.1%; }
-.pull-four    { right: 34.8%; }
-.pull-five    { right: 43.5%; }
-.pull-six     { right: 52.2%; }
-.pull-seven   { right: 60.9%; }
-.pull-eight   { right: 69.6%; }
-.pull-nine    { right: 78.3%; }
-.pull-ten     { right: 87%; }
+.five, .row .five { width: 41.66667%; }
+
+.six, .row .six { width: 50%; }
+
+.seven, .row .seven { width: 58.33333%; }
+
+.eight, .row .eight { width: 66.66667%; }
+
+.nine, .row .nine { width: 75%; }
+
+.ten, .row .ten { width: 83.33333%; }
+
+.eleven, .row .eleven { width: 91.66667%; }
+
+.twelve, .row .twelve { width: 100%; }
+
+.row .offset-by-one { margin-left: 8.33333%; }
+
+.row .offset-by-two { margin-left: 16.66667%; }
+
+.row .offset-by-three { margin-left: 25%; }
+
+.row .offset-by-four { margin-left: 33.33333%; }
+
+.row .offset-by-five { margin-left: 41.66667%; }
+
+.row .offset-by-six { margin-left: 50%; }
+
+.row .offset-by-seven { margin-left: 58.33333%; }
+
+.row .offset-by-eight { margin-left: 66.66667%; }
+
+.row .offset-by-nine { margin-left: 75%; }
+
+.row .offset-by-ten { margin-left: 83.33333%; }
+
+.push-two { left: 16.66667%; }
+
+.pull-two { right: 16.66667%; }
+
+.push-three { left: 25%; }
+
+.pull-three { right: 25%; }
+
+.push-four { left: 33.33333%; }
+
+.pull-four { right: 33.33333%; }
+
+.push-five { left: 41.66667%; }
+
+.pull-five { right: 41.66667%; }
+
+.push-six { left: 50%; }
+
+.pull-six { right: 50%; }
+
+.push-seven { left: 58.33333%; }
+
+.pull-seven { right: 58.33333%; }
+
+.push-eight { left: 66.66667%; }
+
+.pull-eight { right: 66.66667%; }
+
+.push-nine { left: 75%; }
+
+.pull-nine { right: 75%; }
+
+.push-ten { left: 83.33333%; }
+
+.pull-ten { right: 83.33333%; }
 
 img, object, embed { max-width: 100%; height: auto; }
+
+object, embed { height: 100%; }
+
 img { -ms-interpolation-mode: bicubic; }
-#map_canvas img, .map_canvas img {max-width: none!important;}
- 
- /* Nicolas Gallagher's micro clearfix */
-.row:before, .row:after { content:""; display:table; }
+
+#map_canvas img, .map_canvas img { max-width: none!important; }
+
+/* Nicolas Gallagher's micro clearfix */
+.row { *zoom: 1; }
+.row:before, .row:after { content: ""; display: table; }
 .row:after { clear: both; }
-.row { zoom: 1; }
 
+/* Mobile Grid and Overrides ---------------------- */
+/*@media only screen and (max-width: 767px) { body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+  .row { width: auto; min-width: 0; margin-left: 0; margin-right: 0; }
+  .column, .columns { width: auto !important; float: none; }
+  .column:last-child, .columns:last-child { float: none; }
+  [class*="column"] + [class*="column"]:last-child { float: none; }
+  .column:before, .columns:before, .column:after, .columns:after { content: ""; display: table; }
+  .column:after, .columns:after { clear: both; }
+  .offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten { margin-left: 0 !important; }
+  .push-two, .push-three, .push-four, .push-five, .push-six, .push-seven, .push-eight, .push-nine, .push-ten { left: auto; }
+  .pull-two, .pull-three, .pull-four, .pull-five, .pull-six, .pull-seven, .pull-eight, .pull-nine, .pull-ten { right: auto; }
+  /* Mobile 4-column Grid */
+  /*.row .mobile-one { width: 25% !important; float: left; padding: 0 15px; }
+  .row .mobile-one:last-child { float: right; }
+  .row.collapse .mobile-one { padding: 0; }
+  .row .mobile-two { width: 50% !important; float: left; padding: 0 15px; }
+  .row .mobile-two:last-child { float: right; }
+  .row.collapse .mobile-two { padding: 0; }
+  .row .mobile-three { width: 75% !important; float: left; padding: 0 15px; }
+  .row .mobile-three:last-child { float: right; }
+  .row.collapse .mobile-three { padding: 0; }
+  .row .mobile-four { width: 100% !important; float: left; padding: 0 15px; }
+  .row .mobile-four:last-child { float: right; }
+  .row.collapse .mobile-four { padding: 0; }
+  .push-one-mobile { left: 25%; }
+  .pull-one-mobile { right: 25%; }
+  .push-two-mobile { left: 50%; }
+  .pull-two-mobile { right: 50%; }
+  .push-three-mobile { left: 75%; }
+  .pull-three-mobile { right: 75%; } }
+/* Block Grids ---------------------- */
+/* These are 2-up, 3-up, 4-up and 5-up ULs, suited
+for repeating blocks of content. Add 'mobile' to
+them to switch them just like the layout grid
+(one item per line) on phones
 
-/* ----------------------------------------------------------
-Mobile Grid
--------------------------------------------------------------*/
-/*
-  @media only screen and (max-width: 767px) {   
-    body { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; width: 100%; min-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
-    .container { min-width: 0; margin-left: 0; margin-right: 0; }
-    .row { width: 100%; min-width: 0; margin-left: 0; margin-right: 0; }
-    .row .row .column, .row .row .columns { padding: 0; }
-    .column, .columns { width: auto !important; float: none; margin-left: 0; margin-right: 0; }
-    .column:last-child, .columns:last-child { margin-right: 0; float: none; }
-    [class*="column"] + [class*="column"]:last-child { float: none; }
-    [class*="column"]:after { clear: both; }  
-}
-*/
+For IE7/8 compatibility block-grid items need to be
+the same height. You can optionally uncomment the
+lines below to support arbitrary height, but know
+that IE7/8 do not support :nth-child.
+-------------------------------------------------- */
+.block-grid { display: block; overflow: hidden; padding: 0; }
+.block-grid > li { display: block; height: auto; float: left; }
+.block-grid.one-up { margin: 0; }
+.block-grid.one-up > li { width: 100%; padding: 0 0 15px; }
+.block-grid.two-up { margin: 0 -15px; }
+.block-grid.two-up > li { width: 50%; padding: 0 15px 15px; }
+.block-grid.two-up > li:nth-child(2n+1) { clear: both; }
+.block-grid.three-up { margin: 0 -12px; }
+.block-grid.three-up > li { width: 33.33%; padding: 0 12px 12px; }
+.block-grid.three-up > li:nth-child(3n+1) { clear: both; }
+.block-grid.four-up { margin: 0 -10px; }
+.block-grid.four-up > li { width: 25%; padding: 0 10px 10px; }
+.block-grid.four-up > li:nth-child(4n+1) { clear: both; }
+.block-grid.five-up { margin: 0 -8px; }
+.block-grid.five-up > li { width: 20%; padding: 0 8px 8px; }
+.block-grid.five-up > li:nth-child(5n+1) { clear: both; }
+
+/* Mobile Block Grids */
+/*@media only screen and (max-width: 767px) { .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
+  .block-grid > li { clear: none !important; }
+  .block-grid.mobile-two-up > li { width: 50%; }
+  .block-grid.mobile-two-up > li:nth-child(2n+1) { clear: both; }
+  .block-grid.mobile-three-up > li { width: 33.33%; }
+  .block-grid.mobile-three-up > li:nth-child(3n+1) { clear: both !important; }
+  .block-grid.mobile-four-up > li { width: 25%; }
+  .block-grid.mobile-four-up > li:nth-child(4n+1) { clear: both; }
+  .block-grid.mobile-five-up > li:nth-child(5n+1) { clear: both; } }
