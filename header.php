@@ -23,7 +23,7 @@
 <body <?php body_class(); ?> >
 
 	<div id="page-container">
-		<header id="page-header" class="container" role="banner">
+		<header id="page-header" role="banner">
 			<div class="row header-row">
 				<div class="logo-container four columns no-border">
 
@@ -44,6 +44,6 @@
 			</div>
 		</header>
 
-		<div id="page-content" class="container" role="main">
+		<div id="page-content" role="main">
         
 <!--END HEADER-->
