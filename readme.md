@@ -1,14 +1,5 @@
-# Growth Spark Starter Theme v1.2 - Features Overview
+# Growth Spark Starter Theme v1.3 - Features Overview
 
-## Auto-Includer
-
-The Auto-Include feature will automatically include() PHP files placed in the /includes/ folder or in the root of any direct sub-directories of that folder(ie /includes/folder-name).
-
-This helps reduce clutter in the functions.php file and eliminates the need to manually include each new file in functions.php.
-
-To prevent accidental including, there are file-naming conventions that must be followed.  See /includes/readme.md for details.
-
-This feature can be found within gs_theme_setup() in functions.php.
 
 ## Custom Admin Features
 
@@ -91,6 +82,8 @@ Now included with the theme are 2 custom widgets:
 
 Simple text widget with an added option for a "Read More" link or button.  Eliminates the need for hard-coding buttons & URLs in widgets.
 
+As of 1.3 also supports the option to add an image to the widget.
+
 ### GS Recent Posts
 
 Enhanced Recent Posts widget which supports:
@@ -99,6 +92,16 @@ Enhanced Recent Posts widget which supports:
 - Date formatting
 - Excerpts
 - Thumbnails
+
+## Auto-Includer
+
+The Auto-Include feature will automatically include() PHP files placed in the /includes/ folder or in the root of any direct sub-directories of that folder(ie /includes/folder-name).
+
+This helps reduce clutter in the functions.php file and eliminates the need to manually include each new file in functions.php.
+
+**WARNING:** For stability reasons this feature is NOT recommended for production environments.  We suggest added proper require() statements to your functions.php file prior to deploying into production.  For convenience, we've added print statements to these loops to help automatically generate them.
+
+This feature can be found within gs_theme_setup() in functions.php.
 
 ## Comments Template
 
