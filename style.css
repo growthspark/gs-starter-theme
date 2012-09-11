@@ -1,8 +1,8 @@
 /*
 Theme Name: Growth Spark Starter Theme
-Description: GrowthSpark WordPress Theme
-Theme URI: http://growthspark.com
-Version: 1.2
+Description: A starter theme for WordPress development
+Theme URI: http://github.com/growthspark/gs-starter-theme
+Version: 1.3
 Author: Growth Spark
 Author URI: http://growthspark.com
 */
@@ -20,8 +20,8 @@ html, body {
 
 body {
 	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-	font-size: 1em;
 	line-height: 1.4;
+	font-size: 62.5%;
 }
 
 
@@ -31,13 +31,14 @@ h1, h2, h3, h4 {
 	font-weight: normal;
 }
 
-h1 { font-size: 2.2em; }
-h2 { font-size: 1.8em; }
-h3 { font-size: 1.5em; }
-h4 { font-size: 1.2em; }
+h1 { font-size: 3.2em; }
+h2 { font-size: 2.8em; }
+h3 { font-size: 2.5em; }
+h4 { font-size: 2.2em; }
 
 p, ul { 
 	line-height: 1.4;
+	font-size: 1.4em;
 }
 
 a, a:visited {
@@ -50,14 +51,8 @@ a:hover {
 }
 
 /* ----------------------------------------------------------
-:: Grid Customization
-
-Defaults set in base.css
+Grid Customization - Defaults set in base.css
 ------------------------------------------------------------- */
-
-.container {
-	padding: 0 15px;
-}
 
 .row {
 	width: 930px;
@@ -186,12 +181,12 @@ Homepage
 Sidebar
 ------------------------------------------------------------- */
 .widget-container {
-	font-size: .85em;
+	font-size: 1.4em;
 	line-height: 1.4;
 }
 
 .widget-container h4 {
-	font-size: 1.4em;
+	font-size: 1.9em;
 }
 
 
@@ -213,6 +208,7 @@ Footer
 	height: 80px;
 	padding: 10px 0 0;
 	margin: 20px 0 0;
+	font-size: 1.2em;
 }
 
 
@@ -247,7 +243,7 @@ Comments Form
 }
 
 .comment-date {
-	font-size: .8em;
+	font-size: 1.3em;
 	color: #999;
 }
 
