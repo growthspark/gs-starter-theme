@@ -56,6 +56,7 @@ Grid Customization - Defaults set in base.css
 
 .row {
 	width: 930px;
+	max-width: 930px;
 	margin: 20px auto 0 auto; 
 }
 
