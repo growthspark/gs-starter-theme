@@ -20,7 +20,7 @@ function gs_theme_setup() {
 	/**
 	 * Loads the theme functions library.
 	 */
-	include_once(TEMPLATEPATH . '/includes/library.php');
+	include_once(TEMPLATEPATH . '/inc/library.php');
 
  	/**
      * Auto-Includer 
@@ -31,7 +31,7 @@ function gs_theme_setup() {
      * Before deploying to production, uncomment the echo statements 
      * below to generate regular require statements & copy them into this file.
      */
-	foreach (glob(__DIR__.'/includes/*.php') as $file) {
+	foreach (glob(__DIR__.'/inc/*.php') as $file) {
 		if ( gs_permitted_file($file) ) {
 			include_once $file;
 			$include = explode(get_template().'/', $file);
@@ -39,7 +39,7 @@ function gs_theme_setup() {
 		}
 	}
 	
-	foreach (glob(__DIR__.'/includes/*/*.php') as $file) {
+	foreach (glob(__DIR__.'/inc/*/*.php') as $file) {
 		if ( gs_permitted_file($file) ) {
 			include_once $file;
 			$include = explode(get_template().'/', $file);
