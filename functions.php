@@ -181,6 +181,24 @@ add_action('wp_enqueue_scripts', 'gs_scripts_styles');
 
 
 /**
+ * Adds support for CSS box-sizing in IE6-7
+ *
+ * The fluid grid system in base.css requires this polyfill
+ * in order to work in legacy browsers.
+ *
+ * @uses wp_enqueue_style()
+ */
+function gs_add_box_sizing_support(){
+	?>
+	<style type="text/css">
+		* { *behavior: url('<?php bloginfo('template_url') ?>/boxsizing.htc'); }
+	</style>
+	<?php
+}
+add_action('wp_head', 'gs_add_box_sizing_support');
+
+
+/**
  * Enqueues scripts and styles for the admin panels.
  * @uses wp_enqueue_style()
  */
