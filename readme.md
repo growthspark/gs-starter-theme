@@ -1,5 +1,7 @@
-# Growth Spark Starter Theme v1.3 - Features Overview
+# Growth Spark Starter Theme 
+### A starter theme for professional WordPress Development
 
+[View Changelog](https://github.com/growthspark/gs-starter-theme/wiki/Changelog)
 
 ## Custom Admin Features
 
