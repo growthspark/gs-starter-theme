@@ -1,11 +1,11 @@
 # Growth Spark Starter Theme 
-### A starter theme for professional WordPress Development
+**A starter theme for professional WordPress Development**
 
 [View Changelog](https://github.com/growthspark/gs-starter-theme/wiki/Changelog)
 
 ## Custom Admin Features
 
-The /includes/admin/ directory now comes stocked with a variety of functions which customize the WordPress admin interface for better usability:
+The /inc/admin/ directory now comes stocked with a variety of functions which customize the WordPress admin interface for better usability:
 
 ### Enhanced "Recent Drafts" Dashboard Widget
 
@@ -97,7 +97,7 @@ Enhanced Recent Posts widget which supports:
 
 ## Auto-Includer
 
-The Auto-Include feature will automatically include() PHP files placed in the /includes/ folder or in the root of any direct sub-directories of that folder(ie /includes/folder-name).
+The Auto-Include feature will automatically include() PHP files placed in the /inc/ folder or in the root of any direct sub-directories of that folder(ie /inc/folder-name).
 
 This helps reduce clutter in the functions.php file and eliminates the need to manually include each new file in functions.php.
 
