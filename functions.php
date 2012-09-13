@@ -277,7 +277,7 @@ function gs_pagination() {
   $current_page = max(1, get_query_var('paged'));
   $total_pages = $wp_query->max_num_pages;
 
-  if ( is_search() ) {  // Special treatment needed for search pages
+  if ( is_search() || is_post_type_archive() ) {  // Special treatment needed for search & archive pages
   	$big = '999999999';
   	$base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
   } else {
