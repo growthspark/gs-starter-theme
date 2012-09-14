@@ -13,7 +13,7 @@
  * @uses wp_enqueue_style()
  */
 function queue_gsrp_admin_scripts() {
-    wp_enqueue_style( 'gsrp-admin-styles', get_template_directory_uri() .'/includes/widget.gs-recent-posts/css/gsrp-admin.css', array(), '1', 'all' );
+    wp_enqueue_style( 'gsrp-admin-styles', get_template_directory_uri() .'/inc/widget.gs-recent-posts/css/gsrp-admin.css', array(), '1', 'all' );
 }
 add_action('admin_enqueue_scripts', 'queue_gsrp_admin_scripts', 1);
 
@@ -24,7 +24,7 @@ add_action('admin_enqueue_scripts', 'queue_gsrp_admin_scripts', 1);
  */
 function queue_gsrp_scripts() {
 	if ( !is_admin() ) {
-	    wp_register_style( 'gsrp-styles', get_template_directory_uri() .'/includes/widget.gs-recent-posts/css/gs-recent-posts.css', array(), '1', 'all' );
+	    wp_register_style( 'gsrp-styles', get_template_directory_uri() .'/inc/widget.gs-recent-posts/css/gs-recent-posts.css', array(), '1', 'all' );
 	    wp_enqueue_style( 'gsrp-styles' );
 	}
 
@@ -192,8 +192,12 @@ class Widget_GS_Recent_Posts extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( ) );
 		if ( isset($instance['title']) )
 			$title = esc_attr( $instance['title'] );
+		else
+			$title = 'New title';
 		if ( isset($instance['excerpt_length']) )
 			$excerpt_length = esc_attr( $instance['excerpt_length'] );
+		else
+			$excerpt_length = '0';
 
 		?>
 		<p>

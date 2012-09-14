@@ -32,15 +32,15 @@ class GS_Feature_Box extends WP_Widget {
 		wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
 		wp_enqueue_style('thickbox');
-		wp_enqueue_script( 'feature-box-uploader', get_template_directory_uri() . '/includes/widget.feature-box/js/feature-box-uploader.js', array('media-upload', 'thickbox'), '1', false );
-		wp_enqueue_style( 'feature-box-styles', get_template_directory_uri() . '/includes/widget.feature-box/css/gs-feature-box.css');
+		wp_enqueue_script( 'feature-box-uploader', get_template_directory_uri() . '/inc/widget.feature-box/js/feature-box-uploader.js', array('media-upload', 'thickbox'), '1', false );
+		wp_enqueue_style( 'feature-box-styles', get_template_directory_uri() . '/inc/widget.feature-box/css/gs-feature-box.css');
 	}
 
 	/**
 	 * Load styles for image upload window
 	 */
 	public function upload_window_stlyes( $hook_suffix ) {
-		wp_enqueue_style( 'feature-box-styles', get_template_directory_uri() . '/includes/widget.feature-box/css/feature-box-uploader.css');
+		wp_enqueue_style( 'feature-box-styles', get_template_directory_uri() . '/inc/widget.feature-box/css/feature-box-uploader.css');
 	}
 
 
@@ -162,6 +162,11 @@ class GS_Feature_Box extends WP_Widget {
 		} else {
 			$title = __( 'New title', 'text_domain' );
 		}
+		if ( isset( $instance[ 'text' ] ) ) {
+			$text = esc_textarea($instance['text']);
+		} else {
+			$text = '';
+		}
 		if ( isset( $instance[ 'linktext' ] ) ) {
 			$linktext = $instance[ 'linktext' ];
 		} else {
@@ -177,8 +182,7 @@ class GS_Feature_Box extends WP_Widget {
 		} else {
 			$image = __( '', 'text_domain' );
 		}
-
-		$text = esc_textarea($instance['text']);
+		
 		$siteurl = get_bloginfo('url');
 		$image = $image;
 
