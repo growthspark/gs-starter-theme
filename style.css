@@ -181,16 +181,6 @@ Homepage
 /* ----------------------------------------------------------
 Sidebar
 ------------------------------------------------------------- */
-.widget-container {
-	font-size: 1.4em;
-	line-height: 1.4;
-}
-
-.widget-container h4 {
-	font-size: 1.9em;
-}
-
-
 .side-widget {
 	border: 1px solid #ccc;
 	margin-bottom: 20px;
