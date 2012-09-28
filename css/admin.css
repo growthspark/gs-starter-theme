@@ -76,6 +76,11 @@ Logo Settings Page
 	background: #ddd;
 }
 
+.logo-preview-container {
+	max-height: 300px;
+	overflow-y: hidden;
+}
+
 
 /* --------------------------------------------------------------------
 Misc

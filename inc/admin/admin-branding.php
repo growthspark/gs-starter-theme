@@ -65,6 +65,7 @@ function gs_add_logo_to_dashboard() {
 
     .index-php #icon-index {
         background-image:url("<?php echo gs_get_logo(); ?>") !important; 
+        background-size: <?php echo gs_logo_width(); ?>px <?php echo gs_logo_height(); ?>px !important;
         background-position: 0px 0px !important;
         height: <?php echo gs_logo_height(); ?>px !important;
         width: <?php echo gs_logo_width(); ?>px !important;

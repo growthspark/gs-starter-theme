@@ -27,7 +27,7 @@
 			<div class="row header-row">
 				<div class="logo-container four columns no-border">
 
-					<a href="<?php bloginfo('url'); ?>" class="logo ir" style="background:no-repeat url(<?php echo gs_get_logo(); ?>);height:<?php echo gs_logo_height(); ?>px;width:<?php echo gs_logo_width(); ?>px;">
+					<a href="<?php bloginfo('url'); ?>" class="logo ir" style="background:no-repeat url(<?php echo gs_get_logo(); ?>);background-size: <?php echo gs_logo_width(); ?>px <?php echo gs_logo_height(); ?>px;height:<?php echo gs_logo_height(); ?>px;width:<?php echo gs_logo_width(); ?>px;">
 						<?php bloginfo('name'); ?>
 					</a>
 				</div>
