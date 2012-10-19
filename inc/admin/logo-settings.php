@@ -64,7 +64,7 @@ function growthspark_logo_options_init() {
 	);
 
 	add_settings_field( 'logo_image', __( 'Logo Image',     'growthspark' ), 'growthspark_settings_field_logo_image', 'logo_options', 'general' );
-	add_settings_field( 'logo_width', __( 'Logo Width',     'growthspark' ), 'growthspark_settings_field_logo_width', 'logo_options', 'general' );
+	add_settings_field( 'logo_width', __( 'Logo Size (pixels)',     'growthspark' ), 'growthspark_settings_field_logo_width', 'logo_options', 'general' );
 	add_settings_field( 'logo_height', __( 'Logo Height',     'growthspark' ), 'growthspark_settings_field_logo_height', 'logo_options', 'general' );
 
 }
@@ -174,8 +174,8 @@ function growthspark_settings_field_logo_width() {
 			$id = 'logo_width';
 			$value = ( isset($options[$id]) && !empty($options[$id]) ) ? intval($options[$id]) : '';
 			$field = '<p class="logo-width">
-				<input id="gs-logo-width" name="growthspark_logo_options[' . $id . ']' . '" type="text" value="' . $value . '" size="4" maxlength="4" onKeyUp="updateLogoWidth(this.value)" />
-				<span class="description">pixels</span>
+				<input id="gs-logo-width" name="growthspark_logo_options[' . $id . ']' . '" type="text" value="' . $value . '" size="4" maxlength="3" onKeyUp="updateLogoWidth(this.value)" />
+				<span class="description">width</span>
 			</p>';
 
 		echo $field;
@@ -194,8 +194,8 @@ function growthspark_settings_field_logo_height() {
 			$id = 'logo_height';
 			$value = ( isset($options[$id]) && !empty($options[$id]) ) ? intval($options[$id]) : '';
 			$field = '<p class="logo-height">
-				<input id="gs-logo-height" name="growthspark_logo_options[' . $id . ']' . '" type="text" value="' . $value . '" size="4" maxlength="4" onKeyUp="updateLogoHeight(this.value)" />
-				<span class="description">pixels</span>
+				<input id="gs-logo-height" name="growthspark_logo_options[' . $id . ']' . '" type="text" value="' . $value . '" size="4" maxlength="3" onKeyUp="updateLogoHeight(this.value)" />
+				<span class="description">height</span>
 			</p>';
 
 		echo $field;
@@ -277,10 +277,10 @@ function gs_print_size_change_script() {
 ?>
 <script type="text/javascript">
 		function updateLogoWidth(width){
-			jQuery('#upload-image-preview').attr('width', width);
+			//jQuery('#upload-image-preview').attr('width', width);
 		}
 		function updateLogoHeight(height){
-			jQuery('#upload-image-preview').attr('height', height);
+			//jQuery('#upload-image-preview').attr('height', height);
 		}
 </script>
 <?php
