@@ -95,16 +95,6 @@ Enhanced Recent Posts widget which supports:
 - Excerpts
 - Thumbnails
 
-## Auto-Includer
-
-The Auto-Include feature will automatically include() PHP files placed in the /inc/ folder or in the root of any direct sub-directories of that folder(ie /inc/folder-name).
-
-This helps reduce clutter in the functions.php file and eliminates the need to manually include each new file in functions.php.
-
-**WARNING:** For stability reasons this feature is NOT recommended for production environments.  We suggest added proper require() statements to your functions.php file prior to deploying into production.  For convenience, we've added print statements to these loops to help automatically generate them.
-
-This feature can be found within gs_theme_setup() in functions.php.
-
 ## Comments Template
 
 Added an updated comments.php which features a clean, compact layout and provided starting styles in style.css.
