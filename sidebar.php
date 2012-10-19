@@ -7,7 +7,7 @@
 ?>
 
 <!--BEGIN SIDEBAR -->
-<?php if( is_front_page()  || is_singular('slide') ):?>
+<?php if( is_front_page()  || is_singular('gs_slide') ):?>
 
 	<aside id="home-widgets" class="row">
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Homepage Widgets') ); ?>

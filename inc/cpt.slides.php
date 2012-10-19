@@ -19,7 +19,7 @@ if ( !function_exists('gs_slides_cpt') ) {
 		/** 
 		 * Sets labels for the Post Type
 		 */
-		$cpt_slug = 'slide';
+		$cpt_slug = 'gs_slide';
 		$singular = 'Slide';
 		$plural = 'Slides';
 
@@ -60,7 +60,7 @@ if ( !function_exists('gs_slides_cpt') ) {
 				'query_var' => true,
 				'menu_position' => 8, 
 				'menu_icon' => get_stylesheet_directory_uri() . '/img/admin/cpt-slide.png',
-				'rewrite' => true,
+				'rewrite' => array('slug' => 'slide'),
 				'capability_type' => 'post',
 				'hierarchical' => false,
 				'has_archive' => true,

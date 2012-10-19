@@ -9,7 +9,7 @@ Template Name: Home Page
 	<div id="slideshow">
 
 	   		<?php 
-	   		$slides = new WP_Query(array( 'post_type' => 'slide'));
+	   		$slides = new WP_Query(array( 'post_type' => 'gs_slide'));
 	   		if ($slides->have_posts() ): while ($slides->have_posts() ) : $slides->the_post(); 
 
 	   			get_template_part('parts/slide');
