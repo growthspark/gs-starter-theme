@@ -2,7 +2,7 @@
 
 		<footer id="page-footer" role="contentinfo">
 			<div class="row">
-				<div class="twelve columns no-border">&copy; 2012 Growth Spark</div>
+				<div class="twelve columns no-border">&copy; <?php echo date('Y'); ?> <?php bloginfo('name') ?></div>
 			</div>	
 
 		</footer>
