@@ -18,34 +18,32 @@
 function gs_theme_setup() {
 
 	/**
-	 * Loads the theme functions library.
+	 * Load the theme functions library
 	 */
-	include_once(TEMPLATEPATH . '/inc/library.php');
+	require_once('inc/library.php');
 
- 	/**
-     * Auto-Includer 
-     *
-     * Automatically includes PHP files in the /includes/ directory. 
-     *
-     * WARNING: Not recommended for use in production environments. 
-     * Before deploying to production, uncomment the echo statements 
-     * below to generate regular require statements & copy them into this file.
-     */
-	foreach (glob(__DIR__.'/inc/*.php') as $file) {
-		if ( gs_permitted_file($file) ) {
-			include_once $file;
-			$include = explode(get_template().'/', $file);
-			//echo "require_once('".$include[1]."'); <br />"; 
-		}
-	}
-	
-	foreach (glob(__DIR__.'/inc/*/*.php') as $file) {
-		if ( gs_permitted_file($file) ) {
-			include_once $file;
-			$include = explode(get_template().'/', $file);
-			//echo "require_once('".$include[1]."'); <br />"; 
-		}
-	}
+	/**
+	 * Load custom post types
+	 */
+	require_once('inc/cpt.slides.php'); 
+
+	/**
+	 * Load custom widgets
+	 */
+	require_once('inc/widget.feature-box/widget.feature-box.php'); 
+	require_once('inc/widget.gs-recent-posts/widget.gs-recent-posts.php'); 
+
+	/**
+	 * Load custom admin features
+	 */
+	require_once('inc/admin/admin-branding.php'); 
+	require_once('inc/admin/admin-menu.php'); 
+	require_once('inc/admin/dashboard.recent-drafts.php'); 
+	require_once('inc/admin/logo-settings.php'); 
+	require_once('inc/admin/remove-dashboard-widgets.php'); 
+	require_once('inc/admin/remove-default-widgets.php'); 
+	require_once('inc/admin/tinymce-editor.php'); 
+	require_once('inc/admin/user-capabilities.php'); 
 
  	/**
      * Removes WordPress version number from the document head (for security).
