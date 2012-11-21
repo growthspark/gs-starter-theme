@@ -34,13 +34,9 @@ Defaults:
 
 ### Admin Branding
 
-logo-settings.php
-
-A new options panel under Appearance -> Logo allows the user to upload a logo for the website.  The logo image can then be generated dynamically on both the front-end as well as the admin panels.
-
 admin-branding.php
 
-A collection of functions that adds custom branding to the Admin panels.  The custom logo (set under Appearance -> Logo) is automatically added to both the login screen & the Dashboard screen.
+A collection of functions that adds custom branding to the Admin panels.  Can be used to add a custom logo to both the login screen & Dashboard.
 
 ### Customized Admin Menu Ordering
 
