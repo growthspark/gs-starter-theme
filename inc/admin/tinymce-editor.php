@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * TinyMCE Customization
  */
