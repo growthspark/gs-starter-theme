@@ -39,7 +39,6 @@ function gs_theme_setup() {
 	require_once('inc/admin/admin-branding.php'); 
 	require_once('inc/admin/admin-menu.php'); 
 	require_once('inc/admin/dashboard.recent-drafts.php'); 
-	require_once('inc/admin/logo-settings.php'); 
 	require_once('inc/admin/remove-dashboard-widgets.php'); 
 	require_once('inc/admin/remove-default-widgets.php'); 
 	require_once('inc/admin/tinymce-editor.php'); 
