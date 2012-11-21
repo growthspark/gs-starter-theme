@@ -68,30 +68,6 @@ Media Uploader
 	display: none !important;
 }
 
-
-/* --------------------------------------------------------------------
-Logo Settings Page
--------------------------------------------------------------------- */
-.upload-image-preview {
-	background: #ddd;
-}
-
-.logo-preview-container {
-	max-height: 300px;
-	overflow-y: hidden;
-}
-
-p.logo-height {
-	position: relative;
-	bottom: 57px;
-	left: 330px;
-}
-
-.appearance_page_logo_options .form-table tbody tr:last-child th {
-	display: none;
-}
-
-
 /* --------------------------------------------------------------------
 Misc
 -------------------------------------------------------------------- */
