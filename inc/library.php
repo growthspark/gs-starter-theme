@@ -79,8 +79,15 @@ function gs_show_categories($start = ' | ', $separator = ', ', $end ='') {
  * @param int $max_char The maximum number of characters to display
  * @uses get_the_content()
  */
-function gs_content_limit($max_char = 200, $more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
-    $content = get_the_content($more_link_text, $stripteaser, $more_file);
+function gs_content_limit($max_char = 200, $post_id = false) {
+    global $post;
+
+    if (!$post_id)
+      $post_id = $post->ID;
+
+    $post = get_post($post_id);
+
+    $content = $post->post_content;
     $content = apply_filters('the_content', $content);
     $content = str_replace(']]>', ']]&gt;', $content);
     $content = strip_tags($content);
@@ -90,6 +97,7 @@ function gs_content_limit($max_char = 200, $more_link_text = '(more...)', $strip
       echo $content;
       echo "</p>";
    }
+   
    else if ((strlen($content)>$max_char) && ($espacio = strpos($content, " ", $max_char ))) {
         $content = substr($content, 0, $espacio);
         $content = $content;
