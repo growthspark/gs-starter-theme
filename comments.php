@@ -20,7 +20,7 @@ if ('comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) die ('Please do not
 if ($comments) : ?>
 	<h3><?php comments_number('No Comments', 'One Comment', '% Comments' );?></h3>
 	<?php foreach ($comments as $comment) : ?>
-	<div class="comment clearfix">
+	<div id="comment-<?php echo $comment->comment_ID; ?>" class="comment clearfix">
 		<div style="float:left;">
 			<?php 
 			echo get_avatar( $comment , '64' ); ?>

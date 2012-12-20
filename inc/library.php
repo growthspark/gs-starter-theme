@@ -140,18 +140,19 @@ function gs_post_thumbnail_url( $size = 'post-thumbnail' ) {
  */
 function _get_field( $key, $id=false, $default='' ) {
   global $post;
-  $key = trim( filter_var( $key, FILTER_SANITIZE_STRING ) );
+  $key = trim(filter_var($key, FILTER_SANITIZE_STRING));
   $result = '';
+
+  if (!$id)
+    $id = $post->ID;
  
-  if ( function_exists( 'get_field' ) ) {
-    if ( isset( $post->ID ) && !$id )
-      $result = get_field( $key );
-    else
-      $result = get_field( $key, $id );
- 
-    if ( $result == '' ) // If ACF enabled but key is undefined, return default
+  if (function_exists('get_field')) {
+    if (get_field($key, $id))
+      $result = get_field($key, $id);
+    if ($result == '')
       $result = $default;
- 
+  } elseif (get_post_meta($id, $key, true)) {
+    $result = get_post_meta($id, $key, true);
   } else {
     $result = $default;
   }
