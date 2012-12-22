@@ -296,4 +296,5 @@ function gs_pagination() {
 
 }
 
+
 ?>
