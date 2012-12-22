@@ -148,13 +148,8 @@ function gs_scripts_styles() {
 	/*
 	 * Loads theme stylesheets.
 	 */
-	require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-	$dependencies = array('gs-base-styles');
-	if (is_plugin_active('gravityforms/gravityforms.php')) {
-		$dependencies[] = 'gforms_css';
-	}
 	wp_enqueue_style( 'gs-base-styles', get_template_directory_uri() . '/css/base.css', array(), '1', 'all' );
-  	wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', $dependencies, '1', 'all' );
+  	wp_enqueue_style( 'gs-theme-styles', get_template_directory_uri() . '/style.css', array('gs-base-styles'), '1', 'all' );
 
 	/*
 	 * Includes Mordernizr in the head.
