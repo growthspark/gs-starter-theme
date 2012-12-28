@@ -79,12 +79,13 @@ function gs_show_categories($start = ' | ', $separator = ', ', $end ='') {
  * @param int $max_char The maximum number of characters to display
  * @uses get_the_content()
  */
-function gs_content_limit($max_char = 200, $post_id = false) {
+function gs_content_limit($max_char = 200, $post_id = false, $more = false) {
     global $post;
 
     if (!$post_id)
       $post_id = $post->ID;
 
+    $temp = $post;
     $post = get_post($post_id);
 
     $content = $post->post_content;
@@ -95,6 +96,9 @@ function gs_content_limit($max_char = 200, $post_id = false) {
     if ( isset($_GET['p']) && ( strlen($_GET['p']) > 0 ) ) {
       echo "<p>";
       echo $content;
+      if ($more) {
+        echo " <a href='".get_permalink($post->ID)."'>".$more."</a>";
+      }
       echo "</p>";
    }
    
@@ -104,13 +108,20 @@ function gs_content_limit($max_char = 200, $post_id = false) {
         echo "<p>";
         echo $content;
         echo "...";
+        if ($more) {
+          echo " <a href='".get_permalink($post->ID)."'>".$more."</a>";
+        }
         echo "</p>";
    }
    else {
       echo "<p>";
       echo $content;
+      if ($more) {
+        echo " <a href='".get_permalink($post->ID)."'>".$more."</a>";
+      }
       echo "</p>";
    }
+   $post = $temp;
 }
 
 /**
@@ -121,9 +132,13 @@ function gs_content_limit($max_char = 200, $post_id = false) {
  * @uses wp_get_attachment_image_src()
  * @uses get_post_thumbnail_id()
  */
-function gs_post_thumbnail_url( $size = 'post-thumbnail' ) {
+function gs_post_thumbnail_url( $size = 'post-thumbnail', $post_id = false ) {
   global $post;
-  $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $size );
+
+  if (!$post_id)
+    $post_id = $post->ID;
+
+  $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), $size );
   $url = $thumb['0'];
   return $url;
 }
