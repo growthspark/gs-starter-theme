@@ -120,7 +120,7 @@ if ( !function_exists('gs_sample_cpt') ) {
 		$tag_singular = 'Custom Tag';
 		$tag_plural = 'Custom Tags';
 
-	    register_taxonomy( 'custom_tag', 
+	    register_taxonomy( $tag_slug, 
 	    	array($cpt_slug), 
 	    	array('hierarchical' => false,               
 	    		'labels' => array(
