@@ -166,6 +166,8 @@ function _get_field( $key, $id=false, $default='' ) {
       $result = get_field($key, $id);
     if ($result == '')
       $result = $default;
+  } elseif ($id == 'options') {
+      $result = get_option('options_'.$key, $default);
   } elseif (get_post_meta($id, $key, true)) {
     $result = get_post_meta($id, $key, true);
   } else {
