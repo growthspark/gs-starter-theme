@@ -269,8 +269,10 @@ add_action('wp_footer', 'gs_jquery_cycle_settings');
  * @global object $wp_query
  * @uses paginate_links()
  */
-function gs_pagination() {
+function gs_pagination($query = false) {
   global $wp_query;
+  $temp = $wp_query;
+  if ($query) $wp_query = $query;
   $current_page = max(1, get_query_var('paged'));
   $total_pages = $wp_query->max_num_pages;
 
@@ -293,7 +295,7 @@ function gs_pagination() {
     echo paginate_links($args);
     echo '</div>';
   }
-
+  $wp_query = $temp;
 }
 
 
