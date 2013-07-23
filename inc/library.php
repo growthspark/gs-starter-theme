@@ -8,13 +8,14 @@
  */
 
 /**
- * Display preformatted debug information for arrays & objects
+ * Print contents of a variable in user-friendly
+ * pre-formatted output.
  * 
- * @param mixed $object The object to debug
+ * @param mixed $var The variable to debug
  */
-function gs_debug($object) {
+function gs_debug($var) {
   echo '<pre>';
-  print_r($object);
+  print_r($var);
   echo '</pre>';
 }
 
