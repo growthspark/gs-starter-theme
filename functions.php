@@ -263,40 +263,4 @@ function gs_jquery_cycle_settings() {
 add_action('wp_footer', 'gs_jquery_cycle_settings');
 
 
-/**
- * Displays pagination for archive & search pages.
- *
- * @global object $wp_query
- * @uses paginate_links()
- */
-function gs_pagination($query = false) {
-  global $wp_query;
-  $temp = $wp_query;
-  if ($query) $wp_query = $query;
-  $current_page = max(1, get_query_var('paged'));
-  $total_pages = $wp_query->max_num_pages;
-
-  if ( is_search() || is_post_type_archive() ) {  // Special treatment needed for search & archive pages
-  	$big = '999999999';
-  	$base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
-  } else {
-  	$base = get_pagenum_link(1) . '%_%';
-  }
-
-  $args = array(
-	'base' => $base,
-    'format' => 'page/%#%',
-    'current' => $current_page,
-    'total' => $total_pages,
-	);
-
-  if ($total_pages > 1){
-    echo '<div class="pagination">';
-    echo paginate_links($args);
-    echo '</div>';
-  }
-  $wp_query = $temp;
-}
-
-
 ?>
