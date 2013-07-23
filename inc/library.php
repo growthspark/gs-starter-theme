@@ -8,30 +8,14 @@
  */
 
 /**
- * Check if a file is safe to include via auto-include
+ * Display preformatted debug information for arrays & objects
  * 
- * @param str $included_file The name of the file to check
- * @return bool
+ * @param mixed $object The object to debug
  */
-function gs_permitted_file($included_file) {
-  $forbidden = array( 
-                'sample',
-                'Copy of',
-                '- Copy',
-                '(1)',
-                '(2)',
-                '(3)'
-                );
-
-  $result = true;
-
-  foreach ( $forbidden as $test ) {
-     if ( strpos($included_file, $test) ) {
-       $result = false;
-    }
-  }
-
-  return $result;
+function gs_debug($object) {
+  echo '<pre>';
+  print_r($object);
+  echo '</pre>';
 }
 
 /**
@@ -141,6 +125,43 @@ function gs_post_thumbnail_url( $size = 'post-thumbnail', $post_id = false ) {
   $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), $size );
   $url = $thumb['0'];
   return $url;
+}
+
+/**
+ * Displays pagination for archive & search pages.
+ *
+ * @global object $wp_query
+ * @uses paginate_links()
+ */
+function gs_pagination($args = array(), $query = false) {
+  global $wp_query;
+  $temp = $wp_query;
+  if ($query) $wp_query = $query;
+  $current_page = max(1, get_query_var('paged'));
+  $total_pages = $wp_query->max_num_pages;
+
+  if ( is_search() || is_post_type_archive() ) {  // Special treatment needed for search & archive pages
+    $big = '999999999';
+    $base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
+  } else {
+    $base = get_pagenum_link(1) . '%_%';
+  }
+
+  $defaults = array(
+    'base' => $base,
+    'format' => 'page/%#%',
+    'current' => $current_page,
+    'total' => $total_pages,
+  );
+
+  $args = wp_parse_args($args, $defaults);
+
+  if ($total_pages > 1){
+    echo '<div class="pagination">';
+    echo paginate_links($args);
+    echo '</div>';
+  }
+  $wp_query = $temp;
 }
 
 /**
